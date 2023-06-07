@@ -1,9 +1,10 @@
 package daoLayer;
 
+import Interface.CrudDAO;
 import entityLayer.User;
 import utilities.SQLConnection;
-import utilities.StatementUtility;
-import utilities.StatusLogUtility;
+import daoLayer.daoUtilities.StatementUtility;
+import daoLayer.daoUtilities.StatusLogUtility;
 
 
 import java.sql.*;

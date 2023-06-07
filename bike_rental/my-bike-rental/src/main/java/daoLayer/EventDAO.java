@@ -1,9 +1,10 @@
 package daoLayer;
 
+import Interface.CrudDAO;
 import entityLayer.Event;
 import utilities.SQLConnection;
-import utilities.StatementUtility;
-import utilities.StatusLogUtility;
+import daoLayer.daoUtilities.StatementUtility;
+import daoLayer.daoUtilities.StatusLogUtility;
 
 import java.awt.geom.Point2D;
 import java.sql.*;

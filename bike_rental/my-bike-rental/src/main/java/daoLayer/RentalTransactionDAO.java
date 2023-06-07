@@ -1,9 +1,10 @@
 package daoLayer;
 
+import Interface.CrudDAO;
 import entityLayer.RentalTransaction;
 import utilities.SQLConnection;
-import utilities.StatementUtility;
-import utilities.StatusLogUtility;
+import daoLayer.daoUtilities.StatementUtility;
+import daoLayer.daoUtilities.StatusLogUtility;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,8 +16,7 @@ import java.util.List;
 public class RentalTransactionDAO implements CrudDAO<RentalTransaction, Integer> {
 	@Override
 	public void save(RentalTransaction rentalTransaction) {
-		String sql =
-				"INSERT INTO rental_transactions (date, type, amount, user_id, rental_id) " +
+		String sql = "INSERT INTO rental_transactions (date, type, amount, user_id, rental_id) " +
 						"VALUES (?, ?, ?, ?, ?);";
 		try (Connection connection = SQLConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {

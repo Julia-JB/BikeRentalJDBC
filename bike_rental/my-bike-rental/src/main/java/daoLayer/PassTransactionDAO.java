@@ -1,9 +1,10 @@
 package daoLayer;
 
+import Interface.CrudDAO;
 import entityLayer.PassTransaction;
 import utilities.SQLConnection;
-import utilities.StatementUtility;
-import utilities.StatusLogUtility;
+import daoLayer.daoUtilities.StatementUtility;
+import daoLayer.daoUtilities.StatusLogUtility;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,8 +16,7 @@ import java.util.List;
 public class PassTransactionDAO implements CrudDAO<PassTransaction, Integer> {
 	@Override
 	public void save(PassTransaction passTransaction) {
-		String sql =
-				"INSERT INTO pass_transactions (date, type, amount, user_id, pass_id) " +
+		String sql = "INSERT INTO pass_transactions (date, type, amount, user_id, pass_id) " +
 						"VALUES (?, ?, ?, ?, ?);";
 		try (Connection connection = SQLConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {

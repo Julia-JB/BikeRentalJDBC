@@ -1,4 +1,4 @@
-package utilities;
+package daoLayer.daoUtilities;
 
 import java.awt.geom.Point2D;
 import java.lang.reflect.Field;
@@ -46,7 +46,6 @@ public class StatementUtility {
 				Object value = resultSet.getObject(field.getName());
 				field.set(object, value);
 			}
-
 			objects.add(object);
 		}
 

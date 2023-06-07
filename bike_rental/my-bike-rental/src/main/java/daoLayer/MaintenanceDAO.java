@@ -1,9 +1,10 @@
 package daoLayer;
 
+import Interface.CrudDAO;
 import entityLayer.Maintenance;
 import utilities.SQLConnection;
-import utilities.StatementUtility;
-import utilities.StatusLogUtility;
+import daoLayer.daoUtilities.StatementUtility;
+import daoLayer.daoUtilities.StatusLogUtility;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,8 +16,7 @@ import java.util.List;
 public class MaintenanceDAO implements CrudDAO<Maintenance, Integer> {
 	@Override
 	public void save(Maintenance maintenance) {
-		String sql =
-				"INSERT INTO maintenance (date_start, date_end, description, bike_id, " +
+		String sql = "INSERT INTO maintenance (date_start, date_end, description, bike_id, " +
 						"technician_id) VALUES (?, ?, ?, ?, ?);";
 		try (Connection connection = SQLConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {

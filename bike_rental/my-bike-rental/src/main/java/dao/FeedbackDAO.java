@@ -13,8 +13,7 @@ import java.util.List;
 public class FeedbackDAO implements CrudDAO<Feedback, Integer> {
 	@Override
 	public void save(Feedback feedback) {
-		String sql =
-				"INSERT INTO feedback (date, rating, comments, user_id) VALUES (?, ?, ?, ?);";
+		String sql = "INSERT INTO feedback (date, rating, comments, user_id) VALUES (?, ?, ?, ?);";
 		try (Connection connection = SQLConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			StatementUtility.setObjectParameters(statement, feedback);

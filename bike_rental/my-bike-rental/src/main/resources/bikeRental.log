@@ -1,0 +1,12 @@
+
+2023-06-06 23:43:41.895 INFO utilities.StatusLogUtility 10 logSaveStatus - User saved successfully.
+2023-06-06 23:43:41.958 INFO utilities.StatusLogUtility 19 logUpdateStatus - BikeRental updated successfully.
+2023-06-06 23:49:07.933 INFO Main 26 main - 
+entityLayer.Station ID: 3
+entityLayer.Station name: Forest Place
+Location: (42.1068, 19.0895)
+Capacity: 8
+2023-06-06 23:53:46.025 INFO Main 30 main - Total number of stations: 4
+2023-06-06 23:49:07.973 INFO utilities.StatusLogUtility 10 logSaveStatus - Event saved successfully.
+2023-06-06 23:50:24.377 INFO utilities.StatusLogUtility 28 logDeleteStatus - Event deleted successfully.
+

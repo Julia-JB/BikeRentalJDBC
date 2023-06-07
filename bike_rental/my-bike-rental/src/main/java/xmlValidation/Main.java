@@ -22,24 +22,28 @@ public class Main {
 		Logger logger = LogManager.getLogger();
 
 		try {
-			// Create a document builder
+			// create a document builder
 			DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 
 			Document document = documentBuilder.parse((Keys.USERS_PATH).getKey());
 
+			// get the element
 			Element rootElement = document.getDocumentElement();
 			Node node = document.getElementsByTagName("users").item(0);
 			Element userElement = (Element) node;
-			int userId =
-					Integer.parseInt(userElement.getElementsByTagName("userId").item(0).getTextContent());
+
+			// parse the element to get the values
+			int userId = Integer.parseInt(userElement.getElementsByTagName("userId").item(0).getTextContent());
 			String firstName = userElement.getElementsByTagName("firstName").item(0).getTextContent();
 			String lastName = userElement.getElementsByTagName("lastName").item(0).getTextContent();
 			String email = userElement.getElementsByTagName("email").item(0).getTextContent();
 			Date dateRegistered =
 					Date.valueOf(userElement.getElementsByTagName("dateRegistered").item(0).getTextContent());
 
+			// create an object
 			User user1 = new User(userId, firstName, lastName, email, dateRegistered);
 
+			// get the number of elements
 			NodeList usersNodes = document.getElementsByTagName("user");
 			logger.info("Number of users: " + usersNodes.getLength());
 

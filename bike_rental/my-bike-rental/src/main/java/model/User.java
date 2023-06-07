@@ -27,6 +27,16 @@ public class User {
 
 	}
 
+	@Override
+	public String toString() {
+		return String.format("\nUser ID: %d" +
+						"\nFirst Name %s" +
+						"\nLast name: %s" +
+						"\nEmail: %s" +
+						"\nDate registered: %s",
+				getUserId(), getFirstName(), getLastName(), getEmail(), getDateRegistered());
+	}
+
 	public int getUserId() {
 		return userId;
 	}
@@ -66,4 +76,6 @@ public class User {
 	public void setDateRegistered(Date dateRegistered) {
 		this.dateRegistered = dateRegistered;
 	}
+
+
 }

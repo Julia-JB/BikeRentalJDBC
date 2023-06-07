@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<users xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.w3.org/2001/XMLSchema-instance users.xsd ">
+    <user>
+    <userId>7</userId>
+    <firstName>Nataly</firstName>
+    <lastName>Wickham</lastName>
+    <email>natwick@gmail.com</email>
+    <dateRegistered>2023-04-18</dateRegistered>
+    </user>
+    <user>
+        <userId>8</userId>
+        <firstName>Jaco</firstName>
+        <lastName>Pastorius</lastName>
+        <email>teentown@gmail.com</email>
+        <dateRegistered>2023-05-20</dateRegistered>
+    </user>
+    <user>
+        <userId>9</userId>
+        <firstName>Tom</firstName>
+        <lastName>Fredrikson</lastName>
+        <email>fredrikson@gmail.com</email>
+        <dateRegistered>2023-05-30</dateRegistered>
+    </user>
+</users>

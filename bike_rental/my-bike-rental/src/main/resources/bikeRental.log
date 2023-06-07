@@ -10,3 +10,10 @@ Capacity: 8
 2023-06-06 23:49:07.973 INFO daoUtilities.StatusLogUtility 10 logSaveStatus - Event saved successfully.
 2023-06-06 23:50:24.377 INFO daoUtilities.StatusLogUtility 28 logDeleteStatus - Event deleted successfully.
 
+
+User ID: 7
+First Name Nataly
+Last name: Wickham
+Email: natwick@gmail.com
+Date registered: 2023-04-18
+2023-06-07 13:04:04.360 INFO xmlValidation.Main 48 main - XML is valid.

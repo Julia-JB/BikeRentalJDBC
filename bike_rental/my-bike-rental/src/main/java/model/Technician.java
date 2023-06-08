@@ -7,7 +7,6 @@ public class Technician {
 	private String lastName;
 	private String phoneNumber;
 	private String email;
-	private List<Maintenance> maintenanceList;
 
 	// Constructors
 	public Technician() {
@@ -68,12 +67,5 @@ public class Technician {
 
 public void setEmail(String email) {
 		this.email = email;
-	}
-	public List<Maintenance> getMaintenanceList() {
-		return maintenanceList;
-	}
-
-	public void setMaintenanceList(List<Maintenance> maintenanceList) {
-		this.maintenanceList = maintenanceList;
 	}
 }

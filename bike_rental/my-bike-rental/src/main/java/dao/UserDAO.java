@@ -49,7 +49,9 @@ public class UserDAO implements CrudDAO<User, Integer> {
 	public List<User> getAll() {
 		List<User> users = new ArrayList<>();
 		try (Connection connection = SQLConnection.getConnection();
-		     PreparedStatement statement = connection.prepareStatement("SELECT * FROM users")) {
+		     PreparedStatement statement = connection.prepareStatement("SELECT user_id AS userId," +
+						     " first_name AS firstName, last_name AS lastName, email, " +
+						     "date_registered AS dateRegistered FROM users;")) {
 			ResultSet resultSet = statement.executeQuery();
 			users = StatementUtility.mapResultSetToObjectList(resultSet, User.class);
 		} catch (SQLException | IllegalAccessException | InstantiationException e) {

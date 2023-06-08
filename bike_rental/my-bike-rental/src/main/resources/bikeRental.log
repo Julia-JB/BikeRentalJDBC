@@ -17,3 +17,51 @@ Last name: Wickham
 Email: natwick@gmail.com
 Date registered: 2023-04-18
 2023-06-07 13:04:04.360 INFO xmlValidation.Main 48 main - XML is valid.
+2023-06-08 13:19:23.061 INFO Main 34 main - []
+2023-06-08 13:20:41.365 INFO Main 34 main - []
+2023-06-08 13:23:01.344 INFO Main 34 main - [
+User ID: 1
+First Name Savannah
+Last name: Robins
+Email: savrobins24@gmail.com
+Date registered: 2022-10-22, 
+User ID: 2
+First Name Samantha
+Last name: Smith
+Email: samsmithhome@gmail.com
+Date registered: 2023-04-18, 
+User ID: 3
+First Name Jasmina
+Last name: Perkolic
+Email: percolicmonte@gmail.com
+Date registered: 2023-05-13, 
+User ID: 7
+First Name Ruby
+Last name: Willson
+Email: rubywill@gmail.com
+Date registered: 2023-04-18, 
+User ID: 8
+First Name Steve
+Last name: Hanson
+Email: stevem@gmail.com
+Date registered: 2023-05-16, 
+User ID: 9
+First Name Chrystal
+Last name: MacKenzie
+Email: chrysmackenz@gmail.com
+Date registered: 2023-04-05, 
+User ID: 10
+First Name Kelly
+Last name: King
+Email: kellykingwae@gmail.com
+Date registered: 2023-06-04, 
+User ID: 11
+First Name Adrian
+Last name: Bliss
+Email: adbliss@gmail.com
+Date registered: 2023-05-18, 
+User ID: 12
+First Name Jeff
+Last name: Ashton
+Email: jeffbhome@gmail.com
+Date registered: 2023-05-16]

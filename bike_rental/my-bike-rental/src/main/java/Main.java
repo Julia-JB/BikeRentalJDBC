@@ -27,7 +27,7 @@ public class Main {
 		Station station1 = stationService.selectStation(3);
 		logger.info(station1);
 
-//		// Complex query with lists
+//		// Complex query with JOIN and lists of objects
 		TechnicianService technicianService = new TechnicianService();
 		logger.info(technicianService.selectTechnician(1));
 

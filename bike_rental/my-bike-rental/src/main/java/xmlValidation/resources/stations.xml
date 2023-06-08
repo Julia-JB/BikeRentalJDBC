@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.w3.org/2001/XMLSchema-instance stations.xsd ">
+    <station>
+        <stationId>1</stationId>
+        <stationName>Town Market</stationName>
+             <location>
+                 <x>42.098</x>
+                <y>19.0994</y>
+            </location>
+        <capacity>12</capacity>
+    </station>
+    <station>
+    <stationId>2</stationId>
+    <stationName>Lighthouse Way</stationName>
+    <location>
+        <x>42.0974</x>
+        <y>19.0911</y>
+    </location>
+    <capacity>10</capacity>
+    </station>
+    <station>
+        <stationId>3</stationId>
+        <stationName>Forest Place</stationName>
+        <location>POINT(42.1068 19.0895)</location>
+        <capacity>8</capacity>
+    </station>
+    <station>
+        <stationId>4</stationId>
+        <stationName>Old Town</stationName>
+        <location>POINT(42.0942 19.1333)</location>
+        <capacity>12</capacity>
+    </station>
+</stations>

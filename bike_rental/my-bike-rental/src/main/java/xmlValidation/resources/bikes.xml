@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bikes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.w3.org/2001/XMLSchema-instance bikes.xsd ">
+    <bike>
+        <bike>
+            <bikeId>1</bikeId>
+            <brand>CityBikeCo</brand>
+            <properties>{"gears": 8, "model": "UrbanCruiser", "brakeType": "Rim brakes", "wheelSize": "26 inches", "suspension": false, "frameMaterial": "Steel", "basketIncluded": true}</properties>
+            <status>RENTED</status>
+            <currentStationId>1</currentStationId>
+    </bike>
+    <bike>
+            <bikeId>2</bikeId>
+            <brand>CityTrailBikeInc</brand>
+            <properties>{"gears": 10, "model": "TrailBlazer", "brakeType": "Disc brakes", "wheelSize": "27.5 inches", "suspension": true, "frameMaterial": "Aluminum", "basketIncluded": false}</properties>
+            <status>AVAILABLE</status>
+            <currentStationId>2</currentStationId>
+    </bike>
+    <bike>
+        <bikeId>4</bikeId>
+        <brand>RoadBikeCorp</brand>
+        <properties>{"gears": 18, "model": "Speedster", "brakeType": "Caliper brakes", "wheelSize": "28 inches", "suspension": false, "frameMaterial": "Carbon Fiber", "basketIncluded": false}</properties>
+        <status>MAINTAINED</status>
+        <currentStationId/>
+    </bike>
+</bikes>

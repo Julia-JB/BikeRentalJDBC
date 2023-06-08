@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="Bikes" type="BikesType"/>
+
+    <xs:complexType name="BikesType">
+        <xs:sequence>
+            <xs:element name="bike" type="BikeType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="BikeType">
+        <xs:sequence>
+            <xs:element name="bikeId" type="xs:int"/>
+            <xs:element name="brand" type="xs:string"/>
+            <xs:element name="properties" type="xs:string"/>
+            <xs:element name="status" type="xs:string"/>
+            <xs:element name="currentStationId" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

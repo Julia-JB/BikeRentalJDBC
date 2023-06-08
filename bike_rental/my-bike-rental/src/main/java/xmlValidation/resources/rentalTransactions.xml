@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rentalTransactions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.w3.org/2001/XMLSchema-instance rentalTransactions.xsd ">
+    <rentalTransactions>
+        <transaction>
+            <transactionId>1</transactionId>
+            <dateTime>2023-05-30T10:50:00</dateTime>
+            <type>Cash</type>
+            <amount>0.24</amount>
+            <userId>2</userId>
+            <rentalId>1</rentalId>
+        </transaction>
+        <transaction>
+            <transactionId>5</transactionId>
+            <dateTime>2023-05-14T10:58:00</dateTime>
+            <type>Credit card</type>
+            <amount>0.40</amount>
+            <userId>3</userId>
+            <rentalId>4</rentalId>
+        </transaction>
+</rentalTransactions>

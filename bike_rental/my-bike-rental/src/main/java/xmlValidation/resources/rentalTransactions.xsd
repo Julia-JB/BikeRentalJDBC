@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="rentalTransactions" type="RentalTransactionsType"/>
+
+    <xs:complexType name="RentalTransactionsType">
+        <xs:sequence>
+            <xs:element name="transaction" type="TransactionType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TransactionType">
+        <xs:sequence>
+            <xs:element name="transactionId" type="xs:int"/>
+            <xs:element name="dateTime" type="xs:dateTime"/>
+            <xs:element name="type" type="xs:string"/>
+            <xs:element name="amount" type="xs:decimal"/>
+            <xs:element name="userId" type="xs:int"/>
+            <xs:element name="rentalId" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

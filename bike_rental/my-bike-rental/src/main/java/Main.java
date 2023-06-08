@@ -3,24 +3,10 @@ import dao.UserDAO;
 import model.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 import service.*;
-import utilities.Keys;
-
-import javax.xml.XMLConstants;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import java.awt.geom.Point2D;
-import java.io.File;
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Date;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 
@@ -29,6 +15,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		Logger logger = LogManager.getLogger();
+
 
 		// Create
 		UserService userService = new UserService();
@@ -40,10 +27,14 @@ public class Main {
 		Station station1 = stationService.selectStation(3);
 		logger.info(station1);
 
+//		// Complex query with lists
+		TechnicianService technicianService = new TechnicianService();
+		logger.info(technicianService.selectTechnician(1));
+
 		int stationsTotal = stationService.selectAllStations().size();
 		logger.info("Total number of stations: " + stationsTotal);
 
-		// Update
+//		// Update
 		LocalDateTime startDateTime = LocalDateTime.of(2023, 5, 29, 12, 0, 0);
 		LocalDateTime endDateTime = LocalDateTime.of(2023, 5, 29, 12, 10, 0);
 		BikeRental bikeRental1 = new BikeRental(6, startDateTime, endDateTime, new BigDecimal(0.90), 8, 4, 3, 4);

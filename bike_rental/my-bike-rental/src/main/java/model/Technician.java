@@ -1,4 +1,5 @@
 package model;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Technician {
@@ -8,16 +9,20 @@ public class Technician {
 	private String phoneNumber;
 	private String email;
 
+	private List<Maintenance> maintenanceList;
+
 	// Constructors
+
 	public Technician() {
 	}
-
-	public Technician(int technicianId, String firstName, String lastName, String phoneNumber, String email) {
+	public Technician(int technicianId, String firstName, String lastName, String phoneNumber,
+	                  String email) {
 		this.technicianId = technicianId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.phoneNumber = phoneNumber;
 		this.email = email;
+		this.maintenanceList = new ArrayList<>();
 	}
 
 	public Technician(String firstName, String lastName, String phoneNumber, String email) {
@@ -26,13 +31,19 @@ public class Technician {
 		this.lastName = lastName;
 		this.phoneNumber = phoneNumber;
 		this.email = email;
+		this.maintenanceList = new ArrayList<>();
+	}
+
+	@Override
+	public String toString() {
+		return "Technician{" + "technicianId=" + technicianId + ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", phoneNumber='" + phoneNumber + '\'' + ", email='" + email + '\'' + ", maintenanceList=" + maintenanceList + '}';
 	}
 
 	// Getters and Setters
+
 	public int getTechnicianId() {
 		return technicianId;
 	}
-
 	public void setTechnicianId(int technicianId) {
 		this.technicianId = technicianId;
 	}
@@ -67,5 +78,13 @@ public class Technician {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public List<Maintenance> getMaintenanceList() {
+		return maintenanceList;
+	}
+
+	public void setMaintenanceList(List<Maintenance> maintenanceList) {
+		this.maintenanceList = maintenanceList;
 	}
 }

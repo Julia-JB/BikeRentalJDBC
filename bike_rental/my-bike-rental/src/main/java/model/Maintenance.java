@@ -31,6 +31,11 @@ public class Maintenance {
 
 	}
 
+	@Override
+	public String toString() {
+		return "Maintenance{" + "maintenanceId=" + maintenanceId + ", dateStart=" + dateStart + ", dateEnd=" + dateEnd + ", description='" + description + '\'' + ", bikeId=" + bikeId + ", technicianId=" + technicianId + '}';
+	}
+
 	public int getMaintenanceId() {
 		return maintenanceId;
 	}

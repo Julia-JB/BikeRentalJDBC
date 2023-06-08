@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<technician>
+    <technicianId>1</technicianId>
+    <firstName>Matt</firstName>
+    <lastName>Brown</lastName>
+    <phoneNumner>360-833-12-10</phoneNumner>
+    <email>mattbrown@citybikes.com</email>
+    <maintenanceList>
+        <maintenance>
+            <maintenanceId>2</maintenanceId>
+            <dateStart>2023-05-28</dateStart>
+            <dateEnd/>
+            <description>brakes check</description>
+            <bikeId>4</bikeId>
+            <technicianId>1</technicianId>
+        </maintenance>
+        <maintenance>
+            <maintenanceId>4</maintenanceId>
+            <dateStart>2023-05-30</dateStart>
+            <dateEnd>2023-06-04</dateEnd>
+            <description>tyres changes</description>
+            <bikeId>2</bikeId>
+            <technicianId>1</technicianId>
+        </maintenance>
+    </maintenanceList>
+</technician>

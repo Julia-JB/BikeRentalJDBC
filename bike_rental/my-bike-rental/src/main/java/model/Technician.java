@@ -2,13 +2,24 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Technician {
-	private int technicianId;
-	private String firstName;
-	private String lastName;
-	private String phoneNumber;
-	private String email;
+import javax.xml.bind.annotation.*;
 
+@XmlRootElement(name = "technician")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Technician {
+	@XmlElement(name = "technicianId")
+	private int technicianId;
+	@XmlElement(name = "firstName")
+	private String firstName;
+	@XmlElement(name = "lastName")
+	private String lastName;
+	@XmlElement(name = "phoneNumber")
+	private String phoneNumber;
+
+	@XmlElement(name = "email")
+	private String email;
+	@XmlElementWrapper(name = "maintenanceList")
+	@XmlElement(name = "maintenance")
 	private List<Maintenance> maintenanceList;
 
 	// Constructors

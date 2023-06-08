@@ -1,5 +1,4 @@
 package model;
-
 import java.util.List;
 
 public class Technician {
@@ -8,8 +7,6 @@ public class Technician {
 	private String lastName;
 	private String phoneNumber;
 	private String email;
-
-
 	private List<Maintenance> maintenanceList;
 
 	// Constructors

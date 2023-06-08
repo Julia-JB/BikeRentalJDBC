@@ -21,6 +21,8 @@ public class Main {
 	public static void main (String[] args) {
 		Logger logger = LogManager.getLogger();
 
+		// xml and xsd files are located in the resources folder
+
 		try {
 			// create a document builder
 			DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();

@@ -3,7 +3,7 @@ package dao;
 import Interface.CrudDAO;
 import model.Station;
 import utilities.SQLConnection;
-import dao.daoUtilities.StatementUtility;
+import dao.daoUtilities.DaoUtility;
 import dao.daoUtilities.StatusLogUtility;
 
 import java.awt.geom.Point2D;
@@ -106,7 +106,7 @@ public class StationDAO implements CrudDAO<Station, Integer> {
 	private Station mapToStationObject(ResultSet resultSet) throws SQLException {
 		Station station = new Station();
 		String locationStr = resultSet.getString("locationStr");
-		Point2D location = StatementUtility.parseLocationText(locationStr);
+		Point2D location = DaoUtility.parseLocationText(locationStr);
 
 		station.setStationId(resultSet.getInt("station_id"));
 		station.setName(resultSet.getString("name"));

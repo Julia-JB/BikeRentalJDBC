@@ -3,7 +3,7 @@ package dao;
 import Interface.CrudDAO;
 import model.RentalTransaction;
 import utilities.SQLConnection;
-import dao.daoUtilities.StatementUtility;
+import dao.daoUtilities.DaoUtility;
 import dao.daoUtilities.StatusLogUtility;
 
 import java.sql.Connection;
@@ -20,7 +20,7 @@ public class RentalTransactionDAO implements CrudDAO<RentalTransaction, Integer>
 						"VALUES (?, ?, ?, ?, ?);";
 		try (Connection connection = SQLConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
-			StatementUtility.setObjectParameters(statement, rentalTransaction);
+			DaoUtility.setObjectParameters(statement, rentalTransaction);
 			int rowsAffected = statement.executeUpdate();
 			StatusLogUtility.logSaveStatus(rentalTransaction, rowsAffected);
 		} catch (SQLException | IllegalAccessException e) {
@@ -38,7 +38,7 @@ public class RentalTransactionDAO implements CrudDAO<RentalTransaction, Integer>
 				      connection.prepareStatement(sql)) {
 			statement.setInt(1, transactionId);
 			ResultSet resultSet = statement.executeQuery();
-			RentalTransaction rentalTransaction = StatementUtility.mapResultSetToObject(resultSet,
+			RentalTransaction rentalTransaction = DaoUtility.mapResultSetToObject(resultSet,
 					RentalTransaction.class);
 			return  rentalTransaction;
 		} catch (SQLException | IllegalAccessException | InstantiationException e) {
@@ -55,7 +55,7 @@ public class RentalTransactionDAO implements CrudDAO<RentalTransaction, Integer>
 		try (   Connection connection = SQLConnection.getConnection();
 		        PreparedStatement statement = connection.prepareStatement(sql)) {
 			ResultSet resultSet = statement.executeQuery();
-			transactions = StatementUtility.mapResultSetToObjectList(resultSet,
+			transactions = DaoUtility.mapResultSetToObjectList(resultSet,
 					RentalTransaction.class);
 		} catch (SQLException | InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
@@ -69,7 +69,7 @@ public class RentalTransactionDAO implements CrudDAO<RentalTransaction, Integer>
 				" rental_id = ? WHERE transaction_id = ?";
 		try (   Connection connection = SQLConnection.getConnection();
 		        PreparedStatement statement = connection.prepareStatement(sql)) {
-			int parameterIndex = StatementUtility.setObjectFieldsForUpdate(statement, rentalTransaction);
+			int parameterIndex = DaoUtility.setObjectFieldsForUpdate(statement, rentalTransaction);
 			statement.setInt(parameterIndex, rentalTransaction.getTransactionId());
 
 			int rowsAffected = statement.executeUpdate();

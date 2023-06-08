@@ -3,7 +3,7 @@ package dao;
 import Interface.CrudDAO;
 import model.PassTransaction;
 import utilities.SQLConnection;
-import dao.daoUtilities.StatementUtility;
+import dao.daoUtilities.DaoUtility;
 import dao.daoUtilities.StatusLogUtility;
 
 import java.sql.Connection;
@@ -20,7 +20,7 @@ public class PassTransactionDAO implements CrudDAO<PassTransaction, Integer> {
 						"VALUES (?, ?, ?, ?, ?);";
 		try (Connection connection = SQLConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
-			StatementUtility.setObjectParameters(statement, passTransaction);
+			DaoUtility.setObjectParameters(statement, passTransaction);
 			int rowsAffected = statement.executeUpdate();
 			StatusLogUtility.logSaveStatus(passTransaction, rowsAffected);
 		} catch (SQLException | IllegalAccessException e) {
@@ -37,7 +37,7 @@ public class PassTransactionDAO implements CrudDAO<PassTransaction, Integer> {
 				      connection.prepareStatement(sql)) {
 			statement.setInt(1, transactionId);
 			ResultSet resultSet = statement.executeQuery();
-			PassTransaction passTransaction = StatementUtility.mapResultSetToObject(resultSet,
+			PassTransaction passTransaction = DaoUtility.mapResultSetToObject(resultSet,
 					PassTransaction.class);
 			return  passTransaction;
 		} catch (SQLException | IllegalAccessException | InstantiationException e) {
@@ -54,7 +54,7 @@ public class PassTransactionDAO implements CrudDAO<PassTransaction, Integer> {
 		try (   Connection connection = SQLConnection.getConnection();
 		        PreparedStatement statement = connection.prepareStatement(sql)) {
 			ResultSet resultSet = statement.executeQuery();
-			transactions = StatementUtility.mapResultSetToObjectList(resultSet, PassTransaction.class);
+			transactions = DaoUtility.mapResultSetToObjectList(resultSet, PassTransaction.class);
 		} catch (SQLException | InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
@@ -67,7 +67,7 @@ public class PassTransactionDAO implements CrudDAO<PassTransaction, Integer> {
 				"pass_id = ? WHERE transaction_id = ?";
 		try (   Connection connection = SQLConnection.getConnection();
 		        PreparedStatement statement = connection.prepareStatement(sql)) {
-			int parameterIndex = StatementUtility.setObjectFieldsForUpdate(statement, passTransaction);
+			int parameterIndex = DaoUtility.setObjectFieldsForUpdate(statement, passTransaction);
 			statement.setInt(parameterIndex, passTransaction.getTransactionId());
 
 			int rowsAffected = statement.executeUpdate();

@@ -3,7 +3,7 @@ package dao;
 import Interface.CrudDAO;
 import model.Feedback;
 import utilities.SQLConnection;
-import dao.daoUtilities.StatementUtility;
+import dao.daoUtilities.DaoUtility;
 import dao.daoUtilities.StatusLogUtility;
 
 import java.sql.*;
@@ -16,7 +16,7 @@ public class FeedbackDAO implements CrudDAO<Feedback, Integer> {
 		String sql = "INSERT INTO feedback (date, rating, comments, user_id) VALUES (?, ?, ?, ?);";
 		try (Connection connection = SQLConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
-			StatementUtility.setObjectParameters(statement, feedback);
+			DaoUtility.setObjectParameters(statement, feedback);
 			int rowsAffected = statement.executeUpdate();
 			StatusLogUtility.logSaveStatus(feedback, rowsAffected);
 		} catch (SQLException | IllegalAccessException e) {
@@ -33,7 +33,7 @@ public class FeedbackDAO implements CrudDAO<Feedback, Integer> {
 				connection.prepareStatement(sql)) {
 			statement.setInt(1, feedbackId);
 			ResultSet resultSet = statement.executeQuery();
-			Feedback feedback = StatementUtility.mapResultSetToObject(resultSet, Feedback.class);
+			Feedback feedback = DaoUtility.mapResultSetToObject(resultSet, Feedback.class);
 			return  feedback;
 		} catch (SQLException | IllegalAccessException | InstantiationException e) {
 			e.printStackTrace();
@@ -50,7 +50,7 @@ public class FeedbackDAO implements CrudDAO<Feedback, Integer> {
 			try (   Connection connection = SQLConnection.getConnection();
 					PreparedStatement statement = connection.prepareStatement(sql)) {
 				 ResultSet resultSet = statement.executeQuery();
-				  feedbacks = StatementUtility.mapResultSetToObjectList(resultSet, Feedback.class);
+				  feedbacks = DaoUtility.mapResultSetToObjectList(resultSet, Feedback.class);
 				} catch (SQLException | InstantiationException | IllegalAccessException e) {
 				e.printStackTrace();
 			}
@@ -63,7 +63,7 @@ public class FeedbackDAO implements CrudDAO<Feedback, Integer> {
 
 		try (   Connection connection = SQLConnection.getConnection();
 				PreparedStatement statement = connection.prepareStatement(sql)) {
-			int parameterIndex = StatementUtility.setObjectFieldsForUpdate(statement, feedback);
+			int parameterIndex = DaoUtility.setObjectFieldsForUpdate(statement, feedback);
 			statement.setInt(parameterIndex, feedback.getFeedbackId());
 
 			int rowsAffected = statement.executeUpdate();

@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StatementUtility {
+public class DaoUtility {
 
 	public static void setObjectParameters(PreparedStatement statement, Object object) throws SQLException,
 			IllegalAccessException {

@@ -3,7 +3,7 @@ package dao;
 import Interface.CrudDAO;
 import model.Event;
 import utilities.SQLConnection;
-import dao.daoUtilities.StatementUtility;
+import dao.daoUtilities.DaoUtility;
 import dao.daoUtilities.StatusLogUtility;
 
 import java.awt.geom.Point2D;
@@ -100,7 +100,7 @@ public class EventDAO implements CrudDAO<Event, Integer> {
 	private Event mapToEventObject(ResultSet resultSet) throws SQLException {
 		Event event = new Event();
 		String locationStr = resultSet.getString("locationStr");
-		Point2D location = StatementUtility.parseLocationText(locationStr);
+		Point2D location = DaoUtility.parseLocationText(locationStr);
 
 		event.setEventId(resultSet.getInt("event_id"));
 		event.setName(resultSet.getString("name"));

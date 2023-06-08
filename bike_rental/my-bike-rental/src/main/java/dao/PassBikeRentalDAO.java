@@ -3,7 +3,7 @@ package dao;
 import Interface.CrudDAO;
 import model.PassBikeRental;
 import utilities.SQLConnection;
-import dao.daoUtilities.StatementUtility;
+import dao.daoUtilities.DaoUtility;
 import dao.daoUtilities.StatusLogUtility;
 
 import java.sql.Connection;
@@ -21,7 +21,7 @@ public class PassBikeRentalDAO implements CrudDAO<PassBikeRental, Integer> {
 
 		try (Connection connection = SQLConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
-			StatementUtility.setObjectParameters(statement, passBikeRental);
+			DaoUtility.setObjectParameters(statement, passBikeRental);
 			int rowsAffected = statement.executeUpdate();
 			StatusLogUtility.logSaveStatus(passBikeRental, rowsAffected);
 		} catch (SQLException | IllegalAccessException e) {
@@ -40,7 +40,7 @@ public class PassBikeRentalDAO implements CrudDAO<PassBikeRental, Integer> {
 				connection.prepareStatement(sql)) {
 			statement.setInt(1, passRentalId);
 			ResultSet resultSet = statement.executeQuery();
-			return StatementUtility.mapResultSetToObject(resultSet, PassBikeRental.class);
+			return DaoUtility.mapResultSetToObject(resultSet, PassBikeRental.class);
 		} catch (SQLException | IllegalAccessException | InstantiationException e) {
 			e.printStackTrace();
 		}
@@ -57,7 +57,7 @@ public class PassBikeRentalDAO implements CrudDAO<PassBikeRental, Integer> {
 		try (Connection connection = SQLConnection.getConnection();
 		PreparedStatement statement = connection.prepareStatement(sql)) {
 			ResultSet resultSet = statement.executeQuery();
-			passBikeRentals = StatementUtility.mapResultSetToObjectList(resultSet,
+			passBikeRentals = DaoUtility.mapResultSetToObjectList(resultSet,
 					PassBikeRental.class);
 		} catch (SQLException | IllegalAccessException | InstantiationException e) {
 			e.printStackTrace();
@@ -73,7 +73,7 @@ public class PassBikeRentalDAO implements CrudDAO<PassBikeRental, Integer> {
 
 		try (Connection connection = SQLConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
-			int parameterIndex = StatementUtility.setObjectFieldsForUpdate(statement, passBikeRental);
+			int parameterIndex = DaoUtility.setObjectFieldsForUpdate(statement, passBikeRental);
 			statement.setInt(parameterIndex, passBikeRental.getPassRentalId());
 
 			int rowsAffected = statement.executeUpdate();

@@ -3,7 +3,7 @@ package dao;
 import Interface.CrudDAO;
 import model.BikeRental;
 import utilities.SQLConnection;
-import dao.daoUtilities.StatementUtility;
+import dao.daoUtilities.DaoUtility;
 import dao.daoUtilities.StatusLogUtility;
 
 
@@ -19,7 +19,7 @@ public class BikeRentalDAO implements CrudDAO<BikeRental, Integer> {
 
 		try (Connection connection = SQLConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
-			StatementUtility.setObjectParameters(statement, bikeRental);
+			DaoUtility.setObjectParameters(statement, bikeRental);
 			int rowsAffected = statement.executeUpdate();
 			if (rowsAffected > 0) {
 				System.out.println("EntityLayer.Bike rental saved successfully.");
@@ -43,7 +43,7 @@ public class BikeRentalDAO implements CrudDAO<BikeRental, Integer> {
 				connection.prepareStatement(sql)) {
 			statement.setInt(1, rentalId);
 			ResultSet resultSet = statement.executeQuery();
-			return StatementUtility.mapResultSetToObject(resultSet, BikeRental.class);
+			return DaoUtility.mapResultSetToObject(resultSet, BikeRental.class);
 		} catch (SQLException | IllegalAccessException | InstantiationException e) {
 			e.printStackTrace();
 		}
@@ -60,7 +60,7 @@ public class BikeRentalDAO implements CrudDAO<BikeRental, Integer> {
 		try (Connection connection = SQLConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			ResultSet resultSet = statement.executeQuery();
-			bikeRentals = StatementUtility.mapResultSetToObjectList(resultSet, BikeRental.class);
+			bikeRentals = DaoUtility.mapResultSetToObjectList(resultSet, BikeRental.class);
 		} catch (SQLException | InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
@@ -76,7 +76,7 @@ public class BikeRentalDAO implements CrudDAO<BikeRental, Integer> {
 
 		try (Connection connection = SQLConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
-			int parameterIndex = StatementUtility.setObjectFieldsForUpdate(statement, bikeRental);
+			int parameterIndex = DaoUtility.setObjectFieldsForUpdate(statement, bikeRental);
 			statement.setInt(parameterIndex, bikeRental.getRentalId());
 
 			int rowsAffected = statement.executeUpdate();

@@ -3,7 +3,7 @@ package dao;
 import Interface.CrudDAO;
 import model.User;
 import utilities.SQLConnection;
-import dao.daoUtilities.StatementUtility;
+import dao.daoUtilities.DaoUtility;
 import dao.daoUtilities.StatusLogUtility;
 
 
@@ -21,7 +21,7 @@ public class UserDAO implements CrudDAO<User, Integer> {
 
 		try (Connection connection = SQLConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
-			 StatementUtility.setObjectParameters(statement, user);
+			 DaoUtility.setObjectParameters(statement, user);
 			 int rowsAffected = statement.executeUpdate();
 			 StatusLogUtility.logSaveStatus(user, rowsAffected);
 		} catch (SQLException | IllegalAccessException e) {
@@ -37,7 +37,7 @@ public class UserDAO implements CrudDAO<User, Integer> {
 				connection.prepareStatement(sql)) {
 			statement.setInt(1, userId);
 			ResultSet resultSet = statement.executeQuery();
-			return StatementUtility.mapResultSetToObject(resultSet, User.class);
+			return DaoUtility.mapResultSetToObject(resultSet, User.class);
 		} catch (SQLException | IllegalAccessException | InstantiationException e) {
 			e.printStackTrace();
 		}
@@ -53,7 +53,7 @@ public class UserDAO implements CrudDAO<User, Integer> {
 						     " first_name AS firstName, last_name AS lastName, email, " +
 						     "date_registered AS dateRegistered FROM users;")) {
 			ResultSet resultSet = statement.executeQuery();
-			users = StatementUtility.mapResultSetToObjectList(resultSet, User.class);
+			users = DaoUtility.mapResultSetToObjectList(resultSet, User.class);
 		} catch (SQLException | IllegalAccessException | InstantiationException e) {
 			e.printStackTrace();
 		}
@@ -68,7 +68,7 @@ public class UserDAO implements CrudDAO<User, Integer> {
 
 		try (Connection connection = SQLConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
-			 int parameterIndex = StatementUtility.setObjectFieldsForUpdate(statement, user);
+			 int parameterIndex = DaoUtility.setObjectFieldsForUpdate(statement, user);
 			 statement.setInt(parameterIndex, user.getUserId());
 
 			int rowsAffected = statement.executeUpdate();

@@ -2,7 +2,7 @@ package dao;
 import Interface.CrudDAO;
 import model.Technician;
 import utilities.SQLConnection;
-import dao.daoUtilities.StatementUtility;
+import dao.daoUtilities.DaoUtility;
 import dao.daoUtilities.StatusLogUtility;
 
 import java.sql.Connection;
@@ -19,7 +19,7 @@ public class TechnicianDAO implements CrudDAO<Technician, Integer> {
 				" (?, ?, ?, ?);";
 		try (Connection connection = SQLConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
-			StatementUtility.setObjectParameters(statement, technician);
+			DaoUtility.setObjectParameters(statement, technician);
 			int rowsAffected = statement.executeUpdate();
 			StatusLogUtility.logSaveStatus(technician, rowsAffected);
 		} catch (SQLException | IllegalAccessException e) {
@@ -37,7 +37,7 @@ public class TechnicianDAO implements CrudDAO<Technician, Integer> {
 		PreparedStatement statement = connection.prepareStatement(sql)) {
 			statement.setInt(1, technicianId);
 			ResultSet resultSet = statement.executeQuery();
-			Technician technician = StatementUtility.mapResultSetToObject(resultSet,
+			Technician technician = DaoUtility.mapResultSetToObject(resultSet,
 					Technician.class);
 
 			return technician;
@@ -56,7 +56,7 @@ public class TechnicianDAO implements CrudDAO<Technician, Integer> {
 		try (Connection connection = SQLConnection.getConnection();
 		PreparedStatement statement = connection.prepareStatement(sql)) {
 			ResultSet resultSet = statement.executeQuery();
-			technicians = StatementUtility.mapResultSetToObjectList(resultSet, Technician.class);
+			technicians = DaoUtility.mapResultSetToObjectList(resultSet, Technician.class);
 
 		} catch (SQLException | IllegalAccessException | InstantiationException e) {
 			e.printStackTrace();
@@ -70,7 +70,7 @@ public class TechnicianDAO implements CrudDAO<Technician, Integer> {
 				"email = ? WHERE technician_id = ?";
 		try (   Connection connection = SQLConnection.getConnection();
 		        PreparedStatement statement = connection.prepareStatement(sql)) {
-			int parameterIndex = StatementUtility.setObjectFieldsForUpdate(statement, technician);
+			int parameterIndex = DaoUtility.setObjectFieldsForUpdate(statement, technician);
 			statement.setInt(parameterIndex, technician.getTechnicianId());
 
 			int rowsAffected = statement.executeUpdate();

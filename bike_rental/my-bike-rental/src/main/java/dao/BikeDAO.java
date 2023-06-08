@@ -3,7 +3,7 @@ package dao;
 import Interface.CrudDAO;
 import model.Bike;
 import utilities.SQLConnection;
-import dao.daoUtilities.StatementUtility;
+import dao.daoUtilities.DaoUtility;
 import dao.daoUtilities.StatusLogUtility;
 
 import java.sql.*;
@@ -19,7 +19,7 @@ public class BikeDAO implements CrudDAO<Bike, Integer> {
 				"(?, ?, ?, ?)";
 		try (Connection connection = SQLConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
-			StatementUtility.setObjectParameters(statement, bike);
+			DaoUtility.setObjectParameters(statement, bike);
 			int rowsAffected = statement.executeUpdate();
 			StatusLogUtility.logSaveStatus(bike, rowsAffected);
 		} catch ( SQLException | IllegalAccessException e) {
@@ -37,7 +37,7 @@ public class BikeDAO implements CrudDAO<Bike, Integer> {
 				connection.prepareStatement(sql)) {
 			statement.setInt(1, bikeId);
 			ResultSet resultSet = statement.executeQuery();
-			return StatementUtility.mapResultSetToObject(resultSet, Bike.class);
+			return DaoUtility.mapResultSetToObject(resultSet, Bike.class);
 		} catch ( SQLException | IllegalAccessException | InstantiationException e) {
 			e.printStackTrace();
 		}
@@ -50,7 +50,7 @@ public class BikeDAO implements CrudDAO<Bike, Integer> {
 		try (Connection connection = SQLConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement("SELECT * FROM bikes")) {
 			ResultSet resultSet = statement.executeQuery();
-			bikes = StatementUtility.mapResultSetToObjectList(resultSet, Bike.class);
+			bikes = DaoUtility.mapResultSetToObjectList(resultSet, Bike.class);
 			} catch (SQLException | IllegalAccessException |
 		             InstantiationException e) {
 			e.printStackTrace();
@@ -64,7 +64,7 @@ public class BikeDAO implements CrudDAO<Bike, Integer> {
 				"= ? WHERE bike_id = ?";
 		try (Connection connection = SQLConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
-			int parameterIndex = StatementUtility.setObjectFieldsForUpdate(statement, bike);
+			int parameterIndex = DaoUtility.setObjectFieldsForUpdate(statement, bike);
 			statement.setInt(parameterIndex, bike.getBikeId());
 
 			int rowsAffected = statement.executeUpdate();

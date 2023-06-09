@@ -1,11 +1,24 @@
 package model;
 
-import java.awt.geom.Point2D;
-public class Station {
+import jaxb.Point2DAdaper;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.awt.geom.Point2D;
+@XmlRootElement(name = "station")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Station {
+	@XmlElement(name = "stationId")
 	private int stationId;
+	@XmlElement(name = "stationName")
 	private String stationName;
+	@XmlElement(name = "location")
+	@XmlJavaTypeAdapter(Point2DAdaper.class)
 	private Point2D location;
+	@XmlElement(name = "capacity")
 	private int capacity;
 
 	public Station(int stationId, String stationName, Point2D location, int capacity) {
@@ -26,12 +39,7 @@ public class Station {
 
 	@Override
 	public String toString() {
-		return String.format("\nentityLayer.Station ID: %d" +
-							"\nentityLayer.Station name: %s" +
-							"\nLocation: (%.4f, %.4f)" +
-							"\nCapacity: %d",
-				getStationId(), getName(), getLocation().getX(), getLocation().getY(),
-				getCapacity());
+		return "Station{" + "stationId=" + stationId + ", stationName='" + stationName + '\'' + ", location=" + location + ", capacity=" + capacity + '}';
 	}
 
 	public int getStationId() {
@@ -65,6 +73,5 @@ public class Station {
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
 	}
-
 
 }

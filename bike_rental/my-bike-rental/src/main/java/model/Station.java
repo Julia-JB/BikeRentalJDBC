@@ -1,6 +1,6 @@
 package model;
 
-import jaxb.Point2DAdaper;
+import jaxb.Point2DAdapter;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -16,7 +16,7 @@ public class Station {
 	@XmlElement(name = "stationName")
 	private String stationName;
 	@XmlElement(name = "location")
-	@XmlJavaTypeAdapter(Point2DAdaper.class)
+	@XmlJavaTypeAdapter(Point2DAdapter.class)
 	private Point2D location;
 	@XmlElement(name = "capacity")
 	private int capacity;

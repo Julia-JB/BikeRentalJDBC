@@ -3,7 +3,7 @@ package jaxb;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 import java.awt.geom.Point2D;
 
-public class Point2DAdaper extends XmlAdapter<String, Point2D>{
+public class Point2DAdapter extends XmlAdapter<String, Point2D>{
 
 	@Override
 	public Point2D unmarshal(String s) throws Exception {

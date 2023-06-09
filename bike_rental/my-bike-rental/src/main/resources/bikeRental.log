@@ -16,9 +16,6 @@ First Name Nataly
 Last name: Wickham
 Email: natwick@gmail.com
 Date registered: 2023-04-18
+
 2023-06-07 13:04:04.360 INFO xmlValidation.Main 48 main - XML is valid.
-
-2
-
-2023-06-08 18:06:10.461 INFO jaxb.Main 26 main - Technician object created from XML - unmarshalling: Technician{technicianId=1, firstName='Matt', lastName='Brown', phoneNumber='null', email='mattbrown@citybikes.com', maintenanceList=[Maintenance{maintenanceId=2, dateStart=Sun May 28 00:00:00 PDT 2023, dateEnd=null, description='brakes check', bikeId=4, technicianId=1}, Maintenance{maintenanceId=4, dateStart=Tue May 30 00:00:00 PDT 2023, dateEnd=Sun Jun 04 00:00:00 PDT 2023, description='tyres changes', bikeId=2, technicianId=1}]}
-2023-06-08 18:06:10.468 INFO jaxb.Main 38 main - Station object created from XML - unmarshalling: Station{stationId=2, stationName='Lighthouse Way', location=Point2D.Double[42.0974, 19.0911], capacity=10}
+2023-06-09 10:26:59.005 INFO Main 32 main - [Technician{technicianId=1, firstName='Matt', lastName='Brown', phoneNumber='360-833-12-10', email='mattbrown@citybikes.com', maintenanceList=[Maintenance{maintenanceId=2, dateStart=2023-05-28, dateEnd=null, description='brakes check', bikeId=4, technicianId=1}]}, Technician{technicianId=3, firstName='Gregory', lastName='Baker', phoneNumber='4252509056', email='gregbsnohomish@gmail.com', maintenanceList=[Maintenance{maintenanceId=0, dateStart=null, dateEnd=null, description='null', bikeId=0, technicianId=3}]}]

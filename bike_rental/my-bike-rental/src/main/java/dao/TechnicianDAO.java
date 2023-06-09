@@ -8,6 +8,7 @@ import dao.daoUtilities.StatusLogUtility;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class TechnicianDAO implements CrudDAO<Technician, Integer> {
@@ -46,7 +47,8 @@ public class TechnicianDAO implements CrudDAO<Technician, Integer> {
 					String lastName = resultSet.getString("last_name");
 					String phoneNumber = resultSet.getString("phone_number");
 					String email = resultSet.getString("email");
-					technician = new Technician(firstName, lastName, phoneNumber, email);
+					technician = new Technician(technicianId, firstName, lastName, phoneNumber,
+							email);
 
 				}
 
@@ -72,19 +74,59 @@ public class TechnicianDAO implements CrudDAO<Technician, Integer> {
 	@Override
 	public List<Technician> getAll() {
 		List<Technician> technicians = new ArrayList<>();
-		String sql = "SELECT technician_id AS technicianId, first_name AS firstName, last_name AS" +
-				" lastName, phone_number AS phoneNumber, email FROM technicians;";
+		String sql = "SELECT technicians.technician_id, first_name, last_name, phone_number, " +
+				"email, maintenance_id, date_start, date_end, description, bike_id " +
+				"FROM technicians " +
+				"LEFT JOIN maintenance ON technicians.technician_id = maintenance.technician_id;";
 
 		try (Connection connection = SQLConnection.getConnection();
-		PreparedStatement statement = connection.prepareStatement(sql)) {
-			ResultSet resultSet = statement.executeQuery();
-			technicians = DaoUtility.mapResultSetToObjectList(resultSet, Technician.class);
+		     PreparedStatement statement = connection.prepareStatement(sql);
+		     ResultSet resultSet = statement.executeQuery()) {
 
-		} catch (SQLException | IllegalAccessException | InstantiationException e) {
+			while (resultSet.next()) {
+				int technicianId = resultSet.getInt("technician_id");
+
+				Technician technician = findTechnicianById(technicians, technicianId);
+				if (technician == null) {
+					String firstName = resultSet.getString("first_name");
+					String lastName = resultSet.getString("last_name");
+					String phoneNumber = resultSet.getString("phone_number");
+					String email = resultSet.getString("email");
+					technician = new Technician(technicianId, firstName, lastName, phoneNumber,
+							email);
+					technicians.add(technician);
+				}
+
+				if (!resultSet.wasNull()) {
+					int maintenanceId = resultSet.getInt("maintenance_id");
+					Date dateStart = resultSet.getDate("date_start");
+					Date dateEnd = resultSet.getDate("date_end");
+					String description = resultSet.getString("description");
+					int bikeId = resultSet.getInt("bike_id");
+
+					Maintenance maintenance = new Maintenance(maintenanceId, dateStart, dateEnd, description, bikeId, technicianId);
+					technician.getMaintenanceList().add(maintenance);
+				}
+			}
+
+			return technicians;
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return technicians;
+
+		return Collections.emptyList();
 	}
+
+	private Technician findTechnicianById(List<Technician> technicians, int technicianId) {
+		for (Technician technician : technicians) {
+			if (technician.getTechnicianId() == technicianId) {
+				return technician;
+			}
+		}
+		return null;
+	}
+
+
 
 	@Override
 	public void update(Technician technician) {

@@ -1,12 +1,23 @@
 package model;
 
-public class Bike {
-	private int bikeId;
-	private String brand;
-	private String properties;
-	private String status;
-	private int currentStationId;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement(name = "bike")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Bike {
+	@XmlElement(name = "bikeId")
+	private int bikeId;
+	@XmlElement(name = "brand")
+	private String brand;
+	@XmlElement(name = "properties")
+	private String properties;
+	@XmlElement(name = "status")
+	private String status;
+	@XmlElement(name = "currentStationId")
+	private int currentStationId;
 
 	public Bike() {};
 

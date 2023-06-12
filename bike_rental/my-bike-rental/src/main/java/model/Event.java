@@ -1,13 +1,24 @@
 package model;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.awt.geom.Point2D;
-	import java.time.LocalDateTime;
+import java.time.LocalDateTime;
 
-	public class Event {
+		@XmlRootElement(name = "event")
+		@XmlAccessorType(XmlAccessType.FIELD)
+		public class Event {
+		@XmlElement(name = "eventId")
 		private int eventId;
+		@XmlElement(name = "name")
 		private String name;
+		@XmlElement(name = "date")
 		private LocalDateTime date;
+		@XmlElement(name = "location")
 		private Point2D location;
+		@XmlElement(name = "organizerId")
 		private int organizerId;
 
 		public Event() {

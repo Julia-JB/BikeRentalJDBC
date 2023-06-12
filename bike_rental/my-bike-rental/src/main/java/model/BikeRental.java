@@ -1,17 +1,31 @@
 package model;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+	@XmlRootElement(name = "bikeRental")
+	@XmlAccessorType(XmlAccessType.FIELD)
 	public class BikeRental {
-		private int rentalId;
-		private LocalDateTime timeStart;
-		private LocalDateTime timeEnd;
-		private BigDecimal cost;
-		private int userId;
-		private int bikeId;
-		private int stationStartId;
-		private int stationEndId;
+	@XmlElement(name = "rentalId")
+	private int rentalId;
+	@XmlElement(name = "timeStart")
+	private LocalDateTime timeStart;
+	@XmlElement(name = "timeEnd")
+	private LocalDateTime timeEnd;
+	@XmlElement(name = "cost")
+	private BigDecimal cost;
+	@XmlElement(name = "userId")
+	private int userId;
+	@XmlElement(name = "bikeId")
+	private int bikeId;
+	@XmlElement(name = "stationStartId")
+	private int stationStartId;
+	@XmlElement(name = "stationEndId")
+	private int stationEndId;
 
 
 		public BikeRental() {
@@ -27,7 +41,6 @@ import java.time.LocalDateTime;
 			this.stationStartId = stationStartId;
 			this.stationEndId = stationEndId;
 		}
-
 		public BikeRental(int rentalId, LocalDateTime timeStart, LocalDateTime timeEnd, BigDecimal cost,
 		                  int userId, int bikeId, int stationStartId, int stationEndId) {
 			this.rentalId = rentalId;

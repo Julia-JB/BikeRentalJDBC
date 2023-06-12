@@ -19,24 +19,28 @@ public class Main {
 		Logger logger = LogManager.getLogger();
 		File technicianInput = new File(Keys.TECHNICIAN_INPUT.getKey());
 
+		// complex objects  - unmarshalling (date, list)
+
 		try  {
 			JAXBContext jaxbContext = JAXBContext.newInstance(Technician.class);
 			Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 			Technician technician = (Technician) unmarshaller.unmarshal(technicianInput);
 			logger.info("Technician object created from XML - unmarshalling: " + technician);
-			// Use the technician object as needed
+
 		} catch (JAXBException e) {
 			e.printStackTrace();
 		}
 
 		File stationInput = new File(Keys.STATION_INPUT.getKey());
 
+		// Marshalling and unmarshalling using POINT2D adapter
+
 		try  {
 			JAXBContext jaxbContext = JAXBContext.newInstance(Station.class);
 			Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 			Station  station = (Station) unmarshaller.unmarshal(stationInput);
 			logger.info("Station object created from XML - unmarshalling: " + station);
-			// Use the technician object as needed
+
 		} catch (JAXBException e) {
 			e.printStackTrace();
 		}
@@ -49,7 +53,7 @@ public class Main {
 	try {  JAXBContext jaxbContext = JAXBContext.newInstance(Station.class);
 			Marshaller marshaller = jaxbContext.createMarshaller();
 			marshaller.marshal(station1, stationsOutput);
-			// Use the technician object as needed
+
 		} catch (JAXBException e) {
 			e.printStackTrace();
 		}

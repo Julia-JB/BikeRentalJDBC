@@ -1,7 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<station>
-    <stationId>3</stationId>
-    <stationName>Forest Place</stationName>
-    <location>42.1068,19.0895</location>
-    <capacity>8</capacity>
-</station>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><station><stationId>3</stationId><stationName>Forest Place</stationName><location>42.1068,19.0895</location><capacity>8</capacity></station>

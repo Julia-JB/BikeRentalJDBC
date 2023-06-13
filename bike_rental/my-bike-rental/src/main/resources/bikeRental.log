@@ -23,3 +23,4 @@ Date registered: 2023-04-18
 2023-06-11 22:49:54.036 INFO jaxb.Main 38 main - Station object created from XML - unmarshalling: Station{stationId=2, stationName='Lighthouse Way', location=Point2D.Double[42.0974, 19.0911], capacity=10}
 
 
+

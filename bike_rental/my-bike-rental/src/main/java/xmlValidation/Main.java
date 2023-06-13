@@ -37,6 +37,7 @@ public class Main {
 			// validation the xml
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			factory.setValidating(true);
+			factory.setNamespaceAware(true);
 			factory.setFeature("http://apache.org/xml/features/validation/schema", true);
 
 			Document document = documentBuilder.parse((Keys.USERS_PATH).getKey());

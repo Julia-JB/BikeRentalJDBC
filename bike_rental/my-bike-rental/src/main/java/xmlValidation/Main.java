@@ -10,9 +10,16 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import utilities.Keys;
 
+import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Source;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
+import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
 
@@ -27,7 +34,17 @@ public class Main {
 			// create a document builder
 			DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 
+			// load xml document
 			Document document = documentBuilder.parse((Keys.USERS_PATH).getKey());
+
+			// load the xsd schema
+			SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+			Schema schema = factory.newSchema(new File(Keys.XSD_SCHEMA_PATH.getKey()));
+
+			// validating the document
+			Validator validator = schema.newValidator();
+			Source source = new StreamSource(new File(Keys.USERS_PATH.getKey()));
+			validator.validate(source);
 
 			// get the element
 			Element rootElement = document.getDocumentElement();

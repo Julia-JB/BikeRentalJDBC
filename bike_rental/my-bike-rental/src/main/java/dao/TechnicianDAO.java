@@ -34,7 +34,8 @@ public class TechnicianDAO implements CrudDAO<Technician, Integer> {
 				"LEFT JOIN maintenance ON technicians.technician_id = maintenance.technician_id " +
 				"WHERE technicians.technician_id = ?";
 
-		try (Connection connection = SQLConnection.getConnection(); PreparedStatement statement = connection.prepareStatement(sql)) {
+		try (Connection connection = SQLConnection.getConnection();
+		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			statement.setInt(1, technicianId);
 			ResultSet resultSet = statement.executeQuery();
 

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="bikes" type="bikesType"/>
 
-    <xs:element name="Bikes" type="BikesType"/>
-
-    <xs:complexType name="BikesType">
+    <xs:complexType name="bikesType">
         <xs:sequence>
             <xs:element name="bike" type="BikeType" maxOccurs="unbounded"/>
         </xs:sequence>

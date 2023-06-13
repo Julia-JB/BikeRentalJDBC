@@ -34,17 +34,12 @@ public class Main {
 			// create a document builder
 			DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 
-			// load xml document
+			// validation the xml
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			factory.setValidating(true);
+			factory.setFeature("http://apache.org/xml/features/validation/schema", true);
+
 			Document document = documentBuilder.parse((Keys.USERS_PATH).getKey());
-
-			// load the xsd schema
-			SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-			Schema schema = factory.newSchema(new File(Keys.XSD_SCHEMA_PATH.getKey()));
-
-			// validating the document
-			Validator validator = schema.newValidator();
-			Source source = new StreamSource(new File(Keys.USERS_PATH.getKey()));
-			validator.validate(source);
 
 			// get the element
 			Element rootElement = document.getDocumentElement();

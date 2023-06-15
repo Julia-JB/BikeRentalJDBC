@@ -1,5 +1,6 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jaxb.Point2DAdapter;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -8,16 +9,23 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.awt.geom.Point2D;
+
 @XmlRootElement(name = "station")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Station {
+	@JsonProperty("stationId")
 	@XmlElement(name = "stationId")
 	private int stationId;
+	@JsonProperty("stationName")
 	@XmlElement(name = "stationName")
 	private String stationName;
+
+	@JsonProperty("location")
 	@XmlElement(name = "location")
 	@XmlJavaTypeAdapter(Point2DAdapter.class)
 	private Point2D location;
+
+	@JsonProperty("capacity")
 	@XmlElement(name = "capacity")
 	private int capacity;
 

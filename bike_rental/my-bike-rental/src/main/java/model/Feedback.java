@@ -1,11 +1,18 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.sql.Date;
 public class Feedback {
+	@JsonProperty("feedbackId")
 	private int feedbackId;
+	@JsonProperty("date")
 	private Date date;
+	@JsonProperty("rating")
 	private int rating;
+	@JsonProperty("comments")
 	private String comments;
+	@JsonProperty("userId")
 	private int userId;
 
 	public Feedback() {

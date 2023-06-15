@@ -1,13 +1,34 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Maintenance {
+	@JsonProperty("maintenanceId")
 	private int maintenanceId;
+
+	@JsonProperty("dateStart")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "America" +
+			"/Los_Angeles")
 	private Date dateStart;
+
+	@JsonProperty("dateEnd")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "America" +
+			"/Los_Angeles")
 	private Date dateEnd;
+
+	@JsonProperty("description")
 	private String description;
+
+	@JsonProperty("bikeId")
 	private int bikeId;
+
+	@JsonProperty("technicianId")
 	private int technicianId;
 
 	public Maintenance() {
@@ -33,7 +54,15 @@ public class Maintenance {
 
 	@Override
 	public String toString() {
-		return "Maintenance{" + "maintenanceId=" + maintenanceId + ", dateStart=" + dateStart + ", dateEnd=" + dateEnd + ", description='" + description + '\'' + ", bikeId=" + bikeId + ", technicianId=" + technicianId + '}';
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		return "Maintenance{" +
+				"maintenanceId=" + maintenanceId +
+				", dateStart=" + dateFormat.format(dateStart) +
+				", dateEnd=" + dateFormat.format(dateEnd) +
+				", description='" + description + '\'' +
+				", bikeId=" + bikeId +
+				", technicianId=" + technicianId +
+				'}';
 	}
 
 	public int getMaintenanceId() {

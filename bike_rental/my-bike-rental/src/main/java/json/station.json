@@ -1,0 +1,9 @@
+{
+  "stationId": 2,
+  "stationName": "The Old Olive",
+  "location": {
+    "x": 42.0974,
+    "y": 19.0911
+  },
+  "capacity": 10
+}

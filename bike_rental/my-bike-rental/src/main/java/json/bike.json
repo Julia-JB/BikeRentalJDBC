@@ -1,0 +1,15 @@
+{
+  "bikeId": 2,
+  "brand": "CityTrailBikeInc",
+  "properties": {
+    "gears": 10,
+    "model": "TrailBlazer",
+    "brakeType": "Disc brakes",
+    "wheelSize": "27.5 inches",
+    "suspension": true,
+    "frameMaterial": "Aluminum",
+    "basketIncluded": false
+  },
+  "status": "AVAILABLE",
+  "currentStationId": 2
+}

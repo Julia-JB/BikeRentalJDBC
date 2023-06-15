@@ -1,4 +1,6 @@
 package model;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,18 +10,23 @@ import javax.xml.bind.annotation.*;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Technician {
 	@XmlElement(name = "technicianId")
+	@JsonProperty("technicianId")
 	private int technicianId;
+	@JsonProperty("firstName")
 	@XmlElement(name = "firstName")
 	private String firstName;
+	@JsonProperty("lastName")
 	@XmlElement(name = "lastName")
 	private String lastName;
+	@JsonProperty("phoneNumber")
 	@XmlElement(name = "phoneNumber")
 	private String phoneNumber;
-
+	@JsonProperty("email")
 	@XmlElement(name = "email")
 	private String email;
 	@XmlElementWrapper(name = "maintenanceList")
 	@XmlElement(name = "maintenance")
+	@JsonProperty("maintenanceList")
 	private List<Maintenance> maintenanceList;
 
 	// Constructors

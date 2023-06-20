@@ -49,7 +49,7 @@ public class MyBatisRunner {
 			logger.info("Selecting a station by id" + station);
 
 			List<Station> stations = stationMapper.selectAllStations();
-			logger.info("Selection all stations" + stations);
+			logger.info("Selecting all stations" + stations);
 
 			Station station1 = new Station( "Olive Grove", new Point2D.Double(42.0942, 19.1333),
 					10);

@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Maintenance {
@@ -55,10 +53,11 @@ public class Maintenance {
 	@Override
 	public String toString() {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		String formattedDateEnd = (dateEnd != null) ? dateFormat.format(dateEnd) : "N/A";
 		return "Maintenance{" +
 				"maintenanceId=" + maintenanceId +
 				", dateStart=" + dateFormat.format(dateStart) +
-				", dateEnd=" + dateFormat.format(dateEnd) +
+				", dateEnd=" + formattedDateEnd +
 				", description='" + description + '\'' +
 				", bikeId=" + bikeId +
 				", technicianId=" + technicianId +

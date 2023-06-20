@@ -1,0 +1,39 @@
+
+2023-06-06 23:43:41.895 INFO daoUtilities.StatusLogUtility 10 logSaveStatus - User saved successfully.
+2023-06-06 23:43:41.958 INFO daoUtilities.StatusLogUtility 19 logUpdateStatus - BikeRental updated successfully.
+2023-06-06 23:49:07.933 INFO Main 26 main - 
+model.Station ID: 3
+model.Station name: Forest Place
+Location: (42.1068, 19.0895)
+Capacity: 8
+2023-06-06 23:53:46.025 INFO Main 30 main - Total number of stations: 4
+2023-06-06 23:49:07.973 INFO daoUtilities.StatusLogUtility 10 logSaveStatus - Event saved successfully.
+2023-06-06 23:50:24.377 INFO daoUtilities.StatusLogUtility 28 logDeleteStatus - Event deleted successfully.
+
+
+User ID: 7
+First Name Nataly
+Last name: Wickham
+Email: natwick@gmail.com
+Date registered: 2023-04-18
+
+2023-06-07 13:04:04.360 INFO xmlValidation.Main 48 main - XML is valid.
+
+2023-06-11 22:49:54.021 INFO jaxb.Main 26 main - Technician object created from XML - unmarshalling: Technician{technicianId=1, firstName='Matt', lastName='Brown', phoneNumber='null', email='mattbrown@citybikes.com', maintenanceList=[Maintenance{maintenanceId=2, dateStart=Sun May 28 00:00:00 PDT 2023, dateEnd=null, description='brakes check', bikeId=4, technicianId=1}, Maintenance{maintenanceId=4, dateStart=Tue May 30 00:00:00 PDT 2023, dateEnd=Sun Jun 04 00:00:00 PDT 2023, description='tyres changes', bikeId=2, technicianId=1}]}
+
+2023-06-11 22:49:54.036 INFO jaxb.Main 38 main - Station object created from XML - unmarshalling: Station{stationId=2, stationName='Lighthouse Way', location=Point2D.Double[42.0974, 19.0911], capacity=10}
+
+2023-06-14 09:18:45.091 INFO json.Main 24 main - Object created from JSON: Technician{technicianId=5, firstName='Wyatt', lastName='Science', phoneNumber='360-833-12-10', email='wyattscience@gmail.com', maintenanceList=[Maintenance{maintenanceId=2, dateStart=2023-06-01, dateEnd=2023-06-02, description='speed switcher fix', bikeId=3, technicianId=5}, Maintenance{maintenanceId=4, dateStart=2023-06-09, dateEnd=2023-06-12, description='pedal fix', bikeId=2, technicianId=5}]}
+
+2023-06-14 09:18:45.102 INFO json.Main 33 main - {"name":"Old Town","stationId":5,"stationName":"Old Town","location":{"x":42.0974,"y":19.0911},"capacity":10}
+
+
+2023-06-19 20:04:51.275 INFO MyBatisRunner 28 main - Selecting technician by id Technician{technicianId=3, firstName='Gregory', lastName='Baker', phoneNumber='4252509056', email='gregbsnohomish@gmail.com', maintenanceList=[Maintenance{maintenanceId=4, dateStart=2023-06-18, dateEnd=2023-06-20, description='speed switcher fix', bikeId=2, technicianId=3}]}
+2023-06-19 20:04:51.279 INFO MyBatisRunner 31 main - Selecting all technicians [Technician{technicianId=1, firstName='Matt', lastName='Brown', phoneNumber='360-833-12-10', email='mattbrown@citybikes.com', maintenanceList=[Maintenance{maintenanceId=2, dateStart=2023-05-28, dateEnd=2023-05-30, description='brakes check', bikeId=4, technicianId=1}]}, Technician{technicianId=3, firstName='Gregory', lastName='Baker', phoneNumber='4252509056', email='gregbsnohomish@gmail.com', maintenanceList=[Maintenance{maintenanceId=4, dateStart=2023-06-18, dateEnd=2023-06-20, description='speed switcher fix', bikeId=2, technicianId=3}]}, Technician{technicianId=4, firstName='Thomas', lastName='Weller', phoneNumber='2251281430', email='thomasweller22@gmail.com', maintenanceList=[Maintenance{maintenanceId=5, dateStart=2023-06-20, dateEnd=2023-06-21, description='tyres replacements', bikeId=1, technicianId=4}]}]
+2023-06-19 20:04:51.284 INFO MyBatisRunner 45 main - Station{stationId=4, stationName='Old Town', location=Point2D.Double[42.0942, 19.1333], capacity=12}
+2023-06-19 20:04:51.286 INFO MyBatisRunner 48 main - [Station{stationId=1, stationName='Town Market', location=Point2D.Double[42.098, 19.0994], capacity=12}, Station{stationId=2, stationName='Lighthouse Way', location=Point2D.Double[42.0974, 19.0911], capacity=10}, Station{stationId=3, stationName='Forest Place', location=Point2D.Double[42.1068, 19.0895], capacity=8}, Station{stationId=4, stationName='Old Town', location=Point2D.Double[42.0942, 19.1333], capacity=12}, Station{stationId=6, stationName='Olive Grove', location=Point2D.Double[42.0942, 19.1333], capacity=10}]
+2023-06-19 20:04:51.287 INFO MyBatisRunner 62 main - Maintenance{maintenanceId=2, dateStart=2023-05-28, dateEnd=2023-05-30, description='brakes check', bikeId=4, technicianId=1}
+2023-06-19 20:04:51.288 INFO MyBatisRunner 65 main - [Maintenance{maintenanceId=2, dateStart=2023-05-28, dateEnd=2023-05-30, description='brakes check', bikeId=4, technicianId=1}, Maintenance{maintenanceId=4, dateStart=2023-06-18, dateEnd=2023-06-20, description='speed switcher fix', bikeId=2, technicianId=3}, Maintenance{maintenanceId=5, dateStart=2023-06-20, dateEnd=2023-06-21, description='tyres replacements', bikeId=1, technicianId=4}]
+
+
+

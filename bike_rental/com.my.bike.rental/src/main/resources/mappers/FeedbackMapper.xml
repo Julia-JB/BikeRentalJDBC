@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.FeedbackMapper">
+    <select id="selectFeedbackById" resultType="model.Feedback" resultMap="mapper.FeedbackMapper.feedbackResultMap">
+        select * from feedback where feedback_id = #{id}
+    </select>
+    <resultMap id="feedbackResultMap" type="model.Feedback" autoMapping="false">
+        <id property="feedbackId" column="feedback_id"/>
+        <result property="date" column="date"/>
+        <result property="rating" column="rating" />
+        <result property="comments" column="comments"/>
+        <result property="userId" column="user_id"/>
+    </resultMap>
+
+    <select id="selectAllFeedbacks" resultType="model.Feedback" resultMap="mapper.FeedbackMapper.feedbackResultMap">
+        select * from feedback
+    </select>
+
+    <insert id="addFeedback">
+        insert into feedback (date, rating, comments, user_id)
+        values (#{date}, #{rating}, #{comments}, #{userId});
+    </insert>
+
+    <update id="updateFeedback">
+        update feedback set date = #{date}, rating = #{rating},
+        comments = #{comments}, user_id = #{userId} where feedback_id = #{feedbackId}
+    </update>
+
+    <delete id="deleteFeedback">
+        delete from feedback where feedback_id = #{id}
+    </delete>
+</mapper>

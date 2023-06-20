@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.BikeMapper">
+    <select id="selectBikeById" resultType="model.Bike" resultMap="bikeResultMap">
+        select * from bikes where bike_id = #{id}
+    </select>
+    <resultMap id="bikeResultMap" type="model.Bike" autoMapping="false">
+        <id property="bikeId" column="bike_id"/>
+        <result property="brand" column="brand"/>
+        <result property="properties" column="properties" />
+        <result property="status" column="status"/>
+        <result property="currentStationId" column="current_station_id"/>
+    </resultMap>
+
+    <select id="selectAllBikes" resultType="model.Bike" resultMap="bikeResultMap">
+        select * from bikes
+    </select>
+
+    <insert id="addBike">
+        insert into bikes (brand, properties, status, current_station_id)
+        values (#{brand}, #{properties}, #{status}, #{currentStationId});
+    </insert>
+
+    <update id="updateBike">
+        update bikes set brand = #{brand}, properties = #{properties},
+        status = #{status}, current_station_id = #{currentStationId} where bike_id = #{bikeId}
+    </update>
+
+    <delete id="deleteBike">
+        delete from bikes where bike_id = #{id}
+    </delete>
+</mapper>

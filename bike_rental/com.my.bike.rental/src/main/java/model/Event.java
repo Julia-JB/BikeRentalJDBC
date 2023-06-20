@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 		@XmlAccessorType(XmlAccessType.FIELD)
 		public class Event {
 		@XmlElement(name = "eventId")
-		private int eventId;
+		private Integer eventId;
 		@XmlElement(name = "name")
 		private String name;
 		@XmlElement(name = "date")
@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 		@XmlElement(name = "location")
 		private Point2D location;
 		@XmlElement(name = "organizerId")
-		private int organizerId;
+		private Integer organizerId;
 
 		public Event() {
 		}
@@ -31,7 +31,8 @@ import java.time.LocalDateTime;
 			this.organizerId = organizerId;
 		}
 
-		public Event(int eventId, String name, LocalDateTime date, Point2D location, int organizerId) {
+		public Event(Integer eventId, String name, LocalDateTime date, Point2D location,
+		             Integer organizerId) {
 			this.eventId = eventId;
 			this.name = name;
 			this.date = date;
@@ -39,7 +40,18 @@ import java.time.LocalDateTime;
 			this.organizerId = organizerId;
 		}
 
-		public int getEventId() {
+			@Override
+			public String toString() {
+				return "Event{" +
+						"eventId=" + eventId +
+						", name='" + name + '\'' +
+						", date=" + date +
+						", location=" + location +
+						", organizerId=" + organizerId +
+						'}';
+			}
+
+			public int getEventId() {
 			return eventId;
 		}
 

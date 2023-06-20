@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class PassTransaction {
-
 	private int transactionId;
 	private LocalDateTime dateTime;
 	private String type;
@@ -29,6 +28,11 @@ public class PassTransaction {
 		this.amount = amount;
 		this.userId = userId;
 		this.passId = passId;
+	}
+
+	@Override
+	public String toString() {
+		return "PassTransaction{" + "transactionId=" + transactionId + ", dateTime=" + dateTime + ", type='" + type + '\'' + ", amount=" + amount + ", userId=" + userId + ", passId=" + passId + '}';
 	}
 
 	public PassTransaction() {
@@ -70,7 +74,15 @@ public class PassTransaction {
 		return passId;
 	}
 
-	public void setPass_id(int pass_id) {
+	public void setPassId(int passId) {
 		this.passId = passId;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 }

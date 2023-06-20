@@ -33,6 +33,11 @@ public class Feedback {
 		this.userId = userId;
 	}
 
+	@Override
+	public String toString() {
+		return "Feedback{" + "feedbackId=" + feedbackId + ", date=" + date + ", rating=" + rating + ", comments='" + comments + '\'' + ", userId=" + userId + '}';
+	}
+
 	public int getFeedbackId() {
 		return feedbackId;
 	}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.MaintenanceMapper">
+    <select id="selectMaintenanceById" resultType="model.Maintenance" resultMap="mapper.MaintenanceMapper.maintenanceResultMap">
+        select * from maintenance where maintenance_id = #{id}
+    </select>
+    <resultMap id="maintenanceResultMap" type="model.Maintenance" autoMapping="false">
+        <id property="maintenanceId" column="maintenance_id"/>
+        <result property="dateStart" column="date_start"/>
+        <result property="dateEnd" column="date_end" />
+        <result property="description" column="description"/>
+        <result property="bikeId" column="bike_id"/>
+        <result property="technicianId" column="technician_id"/>
+    </resultMap>
+
+    <select id="selectAllMaintenances" resultType="model.Maintenance" resultMap="mapper.MaintenanceMapper.maintenanceResultMap">
+        select * from maintenance
+    </select>
+
+    <insert id="addMaintenance">
+        insert into maintenance (date_start, date_end, description, bike_id, technician_id)
+        values (#{dateStart}, #{dateEnd}, #{description}, #{bikeId}, #{technicianId});
+    </insert>
+
+    <update id="updateMaintenance">
+        update maintenance set date_start = #{dateStart}, date_end = #{dateEnd},
+        description = #{description}, bike_id = #{bikeId}, technician_id = #{technicianId} where maintenance_id = #{maintenanceId}
+    </update>
+
+    <delete id="deleteMaintenance">
+        delete from maintenance where maintenance_id = #{id}
+    </delete>
+</mapper>

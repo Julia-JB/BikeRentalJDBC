@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.PassMapper">
+    <select id="selectPassById" resultType="model.Pass" resultMap="mapper.PassMapper.passResultMap">
+        select * from passes where pass_id = #{id}
+    </select>
+    <resultMap id="passResultMap" type="model.Pass" autoMapping="false">
+        <id property="passId" column="pass_id"/>
+        <result property="type" column="type"/>
+        <result property="price" column="price" />
+        <result property="validFrom" column="valid_from"/>
+        <result property="validTo" column="valid_to"/>
+        <result property="userId" column="user_id"/>
+    </resultMap>
+
+    <select id="selectAllPasses" resultType="model.Pass" resultMap="mapper.PassMapper.passResultMap">
+        select * from passes
+    </select>
+
+    <insert id="addPass">
+        insert into passes (type, price, valid_from, valid_to, user_id)
+        values (#{type}, #{price}, #{validFrom}, #{validTo}, #{userId});
+    </insert>
+
+    <update id="updatePass">
+        update passes set type = #{type}, price = #{price},
+        valid_from = #{validFrom}, valid_to = #{validTo} where pass_id = #{passId}
+    </update>
+
+    <delete id="deletePass">
+        delete from passes where pass_id = #{id}
+    </delete>
+</mapper>

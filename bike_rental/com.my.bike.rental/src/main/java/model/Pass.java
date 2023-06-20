@@ -14,7 +14,8 @@ public class Pass {
 
 	public Pass() {
 	}
-	public Pass(int passId, String type, BigDecimal price, Date validFrom, Date validTo, int user_id) {
+	public Pass(int passId, String type, BigDecimal price, Date validFrom, Date validTo,
+	            int userId) {
 		this.passId = passId;
 		this.type = type;
 		this.price = price;
@@ -23,13 +24,20 @@ public class Pass {
 		this.userId = userId;
 	}
 
-	public Pass(String type, BigDecimal price, Date validFrom, Date validTo, int user_id) {
+	public Pass(String type, BigDecimal price, Date validFrom, Date validTo, int userId) {
 		this.type = type;
 		this.price = price;
 		this.validFrom = validFrom;
 		this.validTo = validTo;
 		this.userId = userId;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Pass{" + "passId=" + passId + ", type='" + type + '\'' + ", price=" + price + ", validFrom=" + validFrom + ", validTo=" + validTo + ", userId=" + userId + '}';
+	}
+
 	public int getPassId() {
 		return passId;
 	}

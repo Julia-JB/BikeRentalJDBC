@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.RentalTransactionMapper">
+    <select id="selectRentalTransactionById" resultType="model.RentalTransaction" resultMap="mapper.RentalTransactionMapper.rentalTransactionResultMap">
+        select * from rental_transactions where transaction_id = #{id}
+    </select>
+    <resultMap id="rentalTransactionResultMap" type="model.RentalTransaction" autoMapping="false">
+        <id property="transactionId" column="transaction_id"/>
+        <result property="dateTime" column="date"/>
+        <result property="type" column="type" />
+        <result property="amount" column="amount"/>
+        <result property="userId" column="user_id"/>
+        <result property="rentalId" column="rental_id"/>
+    </resultMap>
+
+    <select id="selectAllRentalTransactions" resultType="model.RentalTransaction" resultMap="mapper.RentalTransactionMapper.rentalTransactionResultMap">
+        select * from rental_transactions
+    </select>
+
+    <insert id="addRentalTransaction">
+        insert into rental_transactions (date, type, amount, user_id, rental_id)
+        values (#{dateTime}, #{type}, #{amount}, #{userId}, #{rentalId});
+    </insert>
+
+    <update id="updateRentalTransaction">
+        update rental_transactions set date = #{dateTime}, type = #{type},
+        amount = #{amount}, user_id = #{userId}, rental_id = #{rentalId} where transaction_id = #{transactionId}
+    </update>
+
+    <delete id="deleteRentalTransaction">
+        delete from rental_transactions where transaction_id = #{id}
+    </delete>
+</mapper>

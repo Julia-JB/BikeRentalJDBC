@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.PassTransactionMapper">
+    <select id="selectPassTransactionById" resultType="model.PassTransaction" resultMap="mapper.PassTransactionMapper.passTransactionResultMap">
+        select * from pass_transactions where transaction_id = #{id}
+    </select>
+    <resultMap id="passTransactionResultMap" type="model.PassTransaction" autoMapping="false">
+        <id property="transactionId" column="transaction_id"/>
+        <result property="dateTime" column="date"/>
+        <result property="type" column="type" />
+        <result property="amount" column="amount"/>
+        <result property="userId" column="user_id"/>
+        <result property="passId" column="pass_id"/>
+    </resultMap>
+
+    <select id="selectAllPassTransactions" resultType="model.PassTransaction" resultMap="mapper.PassTransactionMapper.passTransactionResultMap">
+        select * from pass_transactions
+    </select>
+
+    <insert id="addPassTransaction">
+        insert into pass_transactions (date, type, amount, user_id, pass_id)
+        values (#{dateTime}, #{type}, #{amount}, #{userId}, #{passId});
+    </insert>
+
+    <update id="updatePassTransaction">
+        update pass_transactions set date = #{dateTime}, type = #{type},
+        amount = #{amount}, user_id = #{userId}, pass_id = #{passId} where transaction_id = #{transactionId}
+    </update>
+
+    <delete id="deletePassTransaction">
+        delete from pass_transactions where transaction_id = #{id}
+    </delete>
+</mapper>

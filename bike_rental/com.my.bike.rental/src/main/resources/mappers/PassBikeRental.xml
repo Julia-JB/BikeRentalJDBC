@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.PassBikeRentalMapper">
+    <select id="selectPassBikeRentalById" resultType="model.PassBikeRental" resultMap="passBikeRentalResultMap">
+        select * from pass_bike_rentals where pass_rental_id = #{id}
+    </select>
+    <resultMap id="passBikeRentalResultMap" type="model.PassBikeRental" autoMapping="false">
+        <id property="passRentalId" column="pass_rental_id"/>
+        <result property="timeStart" column="time_start"/>
+        <result property="timeEnd" column="time_end" />
+        <result property="bikeId" column="bike_id"/>
+        <result property="stationStartId" column="station_start_id"/>
+        <result property="stationEndId" column="station_end_id"/>
+        <result property="passId" column="pass_id"/>
+        <result property="userId" column="user_id"/>
+    </resultMap>
+
+    <select id="selectAllPassBikeRentals" resultType="model.PassBikeRental" resultMap="passBikeRentalResultMap">
+        select * from pass_bike_rentals
+    </select>
+
+    <insert id="addPassBikeRental">
+        insert into pass_bike_rentals (time_start, time_end, bike_id, station_start_id, station_end_id, pass_id, user_id)
+        values (#{timeStart}, #{timeEnd}, #{bikeId}, #{stationStartId}, #{stationEndId}, #{passId}, #{userId});
+    </insert>
+
+    <update id="updatePassBikeRental">
+        update pass_bike_rentals set time_start = #{timeStart}, time_end = #{timeEnd},
+        bike_id = #{bikeId}, station_start_id = #{stationStartId}, station_end_id = #{stationEndId}, pass_id = #{passId},
+        user_id = #{userId} where pass_rental_id = #{passRentalId}
+    </update>
+
+    <delete id="deletePassBikeRental">
+        delete from pass_bike_rentals where pass_rental_id = #{id}
+    </delete>
+</mapper>

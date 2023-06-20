@@ -47,11 +47,11 @@ public class Bike {
 
 	@Override
 	public String toString() {
-		return String.format("\nEntityLayer.Bike ID: %d" +
+		return String.format("\nBike ID: %d" +
 						     "\nBrand: %s" +
 						     "\nProperties: %s" +
 				             "\nStatus: %s" +
-				             "\nCurrent entityLayer.Station: %d",
+				             "\nCurrent Station: %d",
 				getBikeId(), getBrand(), getProperties(), getStatus(), getCurrentStationId());
 	}
 	public int getBikeId() {

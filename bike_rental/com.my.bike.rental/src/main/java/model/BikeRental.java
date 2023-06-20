@@ -59,10 +59,10 @@ import java.time.LocalDateTime;
 							"\nStart time: %s" +
 							"\nEnd time: %s" +
 							"\nCost: %s" +
-							"\nentityLayer.User ID: %d" +
-							"\nEntityLayer.Bike ID: %d" +
-							"\nentityLayer.Station start: %d" +
-							"\nentityLayer.Station end: %d",
+							"\nUser ID: %d" +
+							"\nBike ID: %d" +
+							"\nStation start: %d" +
+							"\nStation end: %d",
 					getRentalId(), getTimeStart(), getTimeEnd(), getCost(), getUserId(),
 					getBikeId(), getStationStartId(), getStationEndId());
 		}

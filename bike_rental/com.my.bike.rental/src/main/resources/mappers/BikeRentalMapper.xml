@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.BikeRentalMapper">
+    <select id="selectBikeRentalById" resultType="model.BikeRental" resultMap="bikeRentalResultMap">
+        select * from bike_rentals where rental_id = #{id}
+    </select>
+    <resultMap id="bikeRentalResultMap" type="model.BikeRental" autoMapping="false">
+        <id property="rentalId" column="rental_id"/>
+        <result property="timeStart" column="time_start"/>
+        <result property="timeEnd" column="time_end" />
+        <result property="cost" column="cost"/>
+        <result property="userId" column="user_id"/>
+        <result property="bikeId" column="bike_id"/>
+        <result property="stationStartId" column="station_start_id"/>
+        <result property="stationEndId" column="station_end_id"/>
+    </resultMap>
+
+    <select id="selectAllBikeRentals" resultType="model.BikeRental" resultMap="bikeRentalResultMap">
+        select * from bike_rentals
+    </select>
+
+    <insert id="addBikeRental">
+        insert into bike_rentals (time_start, time_end, cost, user_id, bike_id, station_start_id, station_end_id)
+        values (#{timeStart}, #{timeEnd}, #{cost}, #{userId}, #{bikeId}, #{stationStartId}, #{stationEndId});
+    </insert>
+
+    <update id="updateBikeRental">
+        update bike_rentals set time_start = #{timeStart}, time_end = #{timeEnd},
+        cost = #{cost}, user_id = #{userId}, bike_id = #{bikeId}, station_start_id = #{stationStartId}, station_end_id = #{stationEndId} where rental_id = #{rentalId}
+    </update>
+
+    <delete id="deleteBikeRental">
+        delete from bike_rentals where rental_id = #{id}
+    </delete>
+</mapper>

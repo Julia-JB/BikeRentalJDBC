@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.EventMapper">
+    <select id="selectEventById" resultType="model.Event" resultMap="mapper.EventMapper.eventResultMap">
+        select event_id, name, date, ST_AsText(location) as location, organizer_id from events where event_id = #{id}
+    </select>
+    <resultMap id="eventResultMap" type="model.Event" autoMapping="false">
+        <result column="event_id" property="eventId" />
+        <result column="name" property="name" />
+        <result column="date" property="date" />
+        <result column="location" property="location" typeHandler="mapper.Point2DTypeHandler" />
+        <result column="organizer_id" property="organizerId" />
+    </resultMap>
+
+    <select id="selectAllEvents" resultType="model.Event" resultMap="mapper.EventMapper.eventResultMap">
+        select event_id, name, date, ST_AsText(location) as location, organizer_id from events
+    </select>
+
+    <insert id="addEvent">
+        INSERT INTO events (name, date, location, organizer_id)
+        VALUES (#{name}, #{date}, ST_GeomFromText(CONCAT('POINT(', #{location.x}, ' ', #{location.y}, ')')), #{organizerId})
+    </insert>
+
+    <update id="updateEvent">
+        UPDATE events
+        SET name = #{name},
+        date = #{date},
+        location = ST_GeomFromText(CONCAT('POINT(', #{location.x}, ' ', #{location.y}, ')')),
+        organizer_id = #{organizerId}
+        WHERE event_id = #{eventId}
+    </update>
+
+    <delete id="deleteEvent">
+        delete from events where event_id = #{id}
+    </delete>
+</mapper>

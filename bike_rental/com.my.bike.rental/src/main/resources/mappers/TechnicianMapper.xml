@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.TechnicianMapper">
+    <select id="selectTechnicianById" resultMap="mapper.TechnicianMapper.technicianResultMap">
+        select t.technician_id, t.first_name,
+        t.last_name, t.phone_number, t.email,
+        m.maintenance_id, m.date_start, m.date_end,
+        m.description, m.bike_id
+        from technicians t
+        left join maintenance m
+        on t.technician_id = m.technician_id
+        where t.technician_id = #{id}
+    </select>
+    <resultMap id="technicianResultMap" type="model.Technician">
+        <id property="technicianId" column="technician_id"/>
+        <result property="firstName" column="first_name"/>
+        <result property="lastName" column="last_name" />
+        <result property="phoneNumber" column="phone_number" />
+        <result property="email" column="email"/>
+        <collection property="maintenanceList" ofType="model.Maintenance" resultMap="mapper.MaintenanceMapper.maintenanceResultMap"/>
+    </resultMap>
+
+
+    <select id="selectAllTechnicians" resultMap="mapper.TechnicianMapper.technicianResultMap">
+        select t.technician_id, t.first_name,
+        t.last_name, t.phone_number, t.email,
+        m.maintenance_id, m.date_start, m.date_end,
+        m.description, m.bike_id, m.technician_id
+        from technicians t
+        left join maintenance m
+        on t.technician_id = m.technician_id
+    </select>
+
+    <insert id="addTechnician">
+        insert into technicians (first_name, last_name, phone_number, email)
+        values (#{firstName}, #{lastName}, #{phoneNumber}, #{email});
+    </insert>
+
+    <update id="updateTechnician">
+        update technicians set first_name = #{firstName}, last_name = #{lastName},
+        phone_number = #{phoneNumber}, email = #{email} where technician_id = #{technicianId}
+    </update>
+
+    <delete id="deleteTechnician">
+        delete from technicians where technician_id = #{id}
+    </delete>
+</mapper>

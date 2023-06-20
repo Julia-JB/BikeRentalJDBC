@@ -28,6 +28,11 @@ public class RentalTransaction {
 		this.rentalId = rentalId;
 	}
 
+	@Override
+	public String toString() {
+		return "RentalTransaction{" + "transactionId=" + transactionId + ", dateTime=" + dateTime + ", type='" + type + '\'' + ", amount=" + amount + ", userId=" + userId + ", rentalId=" + rentalId + '}';
+	}
+
 	public RentalTransaction() {
 	}
 

@@ -36,6 +36,11 @@ public class PassBikeRental {
 		this.userId = userId;
 	}
 
+	@Override
+	public String toString() {
+		return "PassBikeRental{" + "passRentalId=" + passRentalId + ", timeStart=" + timeStart + ", timeEnd=" + timeEnd + ", bikeId=" + bikeId + ", stationStartId=" + stationStartId + ", stationEndId=" + stationEndId + ", passId=" + passId + ", userId=" + userId + '}';
+	}
+
 	public PassBikeRental() {
 	}
 

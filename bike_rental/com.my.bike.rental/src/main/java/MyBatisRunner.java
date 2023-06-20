@@ -22,7 +22,7 @@ public class MyBatisRunner {
 
 			TechnicianMapper technicianMapper = session.getMapper(TechnicianMapper.class);
 
-			// Handling complex objects with collections of objects
+			// Handling complex objects containing collections of objects
 			Technician technician = technicianMapper.selectTechnicianById(3);
 			logger.info("Selecting technician by id " + technician);
 

@@ -37,8 +37,8 @@ public class MyBatisRunner {
 			// constructor
 			technicianMapper.deleteTechnician(5);
 
-//			 Handling POINT2D type using type handler
-            StationMapper stationMapper = session.getMapper(StationMapper.class);
+            // Handling POINT2D type using type handler
+			StationMapper stationMapper = session.getMapper(StationMapper.class);
 
 			Station station = stationMapper.selectStationById(4);
 			logger.info(station);

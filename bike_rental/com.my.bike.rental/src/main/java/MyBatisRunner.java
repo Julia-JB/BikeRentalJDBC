@@ -1,14 +1,13 @@
-import mapper.*;
+
 import model.*;
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import serviceMyBatis.MaintenanceService;
+import serviceMyBatis.StationService;
+import serviceMyBatis.TechnicianService;
 
 import java.awt.geom.Point2D;
 import java.io.IOException;
-import java.io.InputStream;
 
 import java.sql.Date;
 import java.util.List;
@@ -16,65 +15,60 @@ import java.util.List;
 public class MyBatisRunner {
 	public static void main(String[] args) throws IOException {
 		Logger logger = LogManager.getLogger();
-		try (InputStream stream = Resources.getResourceAsStream("mybatis-config.xml")) {
 
-			SqlSession session = new SqlSessionFactoryBuilder().build(stream).openSession(true);
+		// Handling complex objects containing collections of objects
+		TechnicianService technicianService = new TechnicianService();
+		Technician technician = technicianService.selectTechnician(3);
+		logger.info("Selecting technician by id " + technician);
 
-			TechnicianMapper technicianMapper = session.getMapper(TechnicianMapper.class);
+		List<Technician> technicians = technicianService.selectAllTechnicians();
+		logger.info("Selecting all technicians " + technicians);
 
-			// Handling complex objects containing collections of objects
-			Technician technician = technicianMapper.selectTechnicianById(3);
-			logger.info("Selecting technician by id " + technician);
+		// Adding a record
 
-			List<Technician> technicians = technicianMapper.selectAllTechnicians();
-			logger.info("Selecting all technicians " + technicians);
-
-			// Adding a record
-
-			Technician technician1 = new Technician( "Thomas", "Weller", "2251281430",
+		Technician technician1 = new Technician( "Thomas", "Weller", "2251281430",
 					"thomasweller22@gmail.com");
-			technicianMapper.addTechnician(technician1);
+		technicianService.insertTechnician(technician1);
 
-			// Updating the record
-			technicianMapper.updateTechnician(technician1); // add technicianId value to the
-			// constructor
+		// Updating the record
+		technicianService.updateTechnician(technician1); // add technicianId value to constructor
 
-			// Deleting the record
-			technicianMapper.deleteTechnician(5);
+		// Deleting the record
+		technicianService.deleteTechnician(5);
 
-			// Handling POINT2D type using type handler "java/mapper/POINT2DTypeHandler"
-			StationMapper stationMapper = session.getMapper(StationMapper.class);
+		// Handling POINT2D type using type handler "java/mapper/POINT2DTypeHandler"
 
-			Station station = stationMapper.selectStationById(4);
-			logger.info("Selecting a station by id" + station);
+		StationService stationService = new StationService();
+		Station station = stationService.selectStation(6);
+		logger.info("Selecting station by id" + station);
 
-			List<Station> stations = stationMapper.selectAllStations();
-			logger.info("Selecting all stations" + stations);
+		List<Station> stations = stationService.selectAllStations();
+		logger.info("Selecting all stations" + stations);
 
-			Station station1 = new Station( "Olive Grove", new Point2D.Double(42.0942, 19.1333),
+		Station station1 = new Station( "Olive Grove", new Point2D.Double(42.0942, 19.1333),
 					10);
 
-			stationMapper.addStation(station1);
-			stationMapper.updateStation(station1); // add stationId value to the constructor
-			stationMapper.deleteStation(8);
+		stationService.insertStation(station1);
+		stationService.updateStation(station1); // add stationId value to the constructor
+		stationService.deleteStation(8);
 
-			// Handling regular objects - basic CRUD operations
+		// Handling regular objects - basic CRUD operations
 
-			MaintenanceMapper maintenanceMapper = session.getMapper(MaintenanceMapper.class);
+		MaintenanceService maintenanceService = new MaintenanceService();
 
-			Maintenance maintenance = maintenanceMapper.selectMaintenanceById(2);
-			logger.info("Selecting maintenance record by id" + maintenance);
+		Maintenance maintenance = maintenanceService.selectMaintenance(2);
+		logger.info("Selecting maintenance record by id" + maintenance);
 
-			List<Maintenance> maintenanceList = maintenanceMapper.selectAllMaintenances();
-			logger.info("Selecting all maintenance records" + maintenanceList);
+		List<Maintenance> maintenanceList = maintenanceService.selectAllMaintenance();
+		logger.info("Selecting all maintenance records" + maintenanceList);
 
-			Maintenance maintenance1 = new Maintenance(4, Date.valueOf("2023-06-18"),
+		Maintenance maintenance1 = new Maintenance(4, Date.valueOf("2023-06-18"),
 					Date.valueOf("2023-06-20"), "speed switcher fix", 2, 3);
 
-			maintenanceMapper.addMaintenance(maintenance1);
-			maintenanceMapper.updateMaintenance(maintenance1);
-			maintenanceMapper.deleteMaintenance(5);
+		maintenanceService.insertMaintenance(maintenance1);
+		maintenanceService.updateMaintenance(maintenance1);
+		maintenanceService.deleteMaintenance(5);
 
 		}
 	}
-}
+

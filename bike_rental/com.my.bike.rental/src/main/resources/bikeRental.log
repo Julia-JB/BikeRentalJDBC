@@ -51,12 +51,14 @@ User ID: 3
 First Name Jasmina
 Last name: Perkolic
 Email: percolicmonte@gmail.com
-Date registered: 2023-05-13}, Event{eventId=4, name='Retro Bikes Show', date=2023-06-18T11:00, location=Point2D.Double[42.0942, 19.1333], user
+Date registered: 2023-05-13},
+Event{eventId=4, name='Retro Bikes Show', date=2023-06-18T11:00, location=Point2D.Double[42.0942, 19.1333], user
 User ID: 3
 First Name Jasmina
 Last name: Perkolic
 Email: percolicmonte@gmail.com
-Date registered: 2023-05-13}, Event{eventId=7, name='Pedalpalooza', date=2023-06-20T10:00, location=Point2D.Double[42.0942, 19.1333], user
+Date registered: 2023-05-13},
+Event{eventId=7, name='Pedalpalooza', date=2023-06-20T10:00, location=Point2D.Double[42.0942, 19.1333], user
 User ID: 3
 First Name Jasmina
 Last name: Perkolic

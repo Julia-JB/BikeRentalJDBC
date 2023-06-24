@@ -7,6 +7,7 @@ import model.Station;
 import model.Technician;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import serviceMyBatis.TechnicianService;
 import utilities.Keys;
 
 import java.awt.geom.Point2D;
@@ -26,6 +27,11 @@ public class JacksonRunner {
 		Technician technician1 = objectMapper.readValue(jsonTechnician, Technician.class);
 		logger.info("Object created from JSON: " + technician1);
 
+		TechnicianService technicianService = new TechnicianService();
+		Technician technician = technicianService.selectTechnician(3);
+		String technicianJSON = objectMapper.writeValueAsString(technician);
+		logger.info(technicianJSON);
+
 		Station station = new Station(5, "Old Town", new Point2D.Double(42.0974, 19.0911),10);
 
 		// Serializing - handling POINT2D data type
@@ -33,5 +39,6 @@ public class JacksonRunner {
 		ObjectWriter writer = objectMapper.writer(new DefaultPrettyPrinter());
 		writer.writeValue(new File(Keys.STATION_OUTPUT_JSON.getKey()), stationJSON);
 		logger.info(stationJSON);
+
 	}
 }

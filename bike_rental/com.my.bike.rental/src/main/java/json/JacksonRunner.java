@@ -28,7 +28,7 @@ public class JacksonRunner {
 
 		Station station = new Station(5, "Old Town", new Point2D.Double(42.0974, 19.0911),10);
 
-		// Serializing - handling POINT2D date type
+		// Serializing - handling POINT2D data type
 		String stationJSON = objectMapper.writeValueAsString(station);
 		ObjectWriter writer = objectMapper.writer(new DefaultPrettyPrinter());
 		writer.writeValue(new File(Keys.STATION_OUTPUT_JSON.getKey()), stationJSON);

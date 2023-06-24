@@ -1,9 +1,6 @@
 package model;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*;
 import java.awt.geom.Point2D;
 import java.time.LocalDateTime;
 
@@ -20,11 +17,11 @@ import java.time.LocalDateTime;
 		private Point2D location;
 		@XmlElement(name = "organizerId")
 		private Integer organizerId;
+		@XmlElement(name = "user")
 		private User user;
 
 		public Event() {
 		}
-
 		public Event(String name, LocalDateTime date, Point2D location, User user) {
 			this.name = name;
 			this.date = date;

@@ -4,7 +4,7 @@
     <station>
         <stationId>1</stationId>
         <stationName>Town Market</stationName>
-             <location>42.098, 19.0994</location>
+        <location>42.098, 19.0994</location>
         <capacity>12</capacity>
     </station>
     <station>

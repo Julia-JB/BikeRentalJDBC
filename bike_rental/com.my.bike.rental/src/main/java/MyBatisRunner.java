@@ -17,7 +17,7 @@ public class MyBatisRunner {
 	public static void main(String[] args) throws IOException {
 		Logger logger = LogManager.getLogger();
 
-		// Retrieving complex objects containing nested object (association attribute)
+		// Retrieving complex objects containing a nested object (association attribute)
 		EventService eventService = new EventService();
 		Event event = eventService.selectEvent(4);
 		logger.info(event);

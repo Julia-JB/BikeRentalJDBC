@@ -2,7 +2,7 @@ package dao;
 
 import Interface.CrudDAO;
 import model.Bike;
-import utilities.SQLConnection;
+import utilities.DBConnection;
 import dao.daoUtilities.DaoUtility;
 import dao.daoUtilities.StatusLogUtility;
 
@@ -17,7 +17,7 @@ public class BikeDAO implements CrudDAO<Bike, Integer> {
 	public void save(Bike bike) {
 		String sql = "INSERT INTO bikes (brand, properties, status, current_station_id) VALUES " +
 				"(?, ?, ?, ?)";
-		try (Connection connection = SQLConnection.getConnection();
+		try (Connection connection = DBConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			DaoUtility.setObjectParameters(statement, bike);
 			int rowsAffected = statement.executeUpdate();
@@ -32,7 +32,7 @@ public class BikeDAO implements CrudDAO<Bike, Integer> {
 		String sql = "SELECT bike_id AS bikeId, brand, properties, status, current_station_id AS " +
 				"currentStationId FROM bikes WHERE bike_id = ?";
 
-		try (Connection connection = SQLConnection.getConnection();
+		try (Connection connection = DBConnection.getConnection();
 		     PreparedStatement statement =
 				connection.prepareStatement(sql)) {
 			statement.setInt(1, bikeId);
@@ -47,7 +47,7 @@ public class BikeDAO implements CrudDAO<Bike, Integer> {
 	@Override
 	public List<Bike> getAll() {
 		List<Bike> bikes = new ArrayList<>();
-		try (Connection connection = SQLConnection.getConnection();
+		try (Connection connection = DBConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement("SELECT * FROM bikes")) {
 			ResultSet resultSet = statement.executeQuery();
 			bikes = DaoUtility.mapResultSetToObjectList(resultSet, Bike.class);
@@ -62,7 +62,7 @@ public class BikeDAO implements CrudDAO<Bike, Integer> {
 	public void update(Bike bike) {
 		String sql = "UPDATE bikes SET brand = ?, properties = ?, status = ?, current_station_id " +
 				"= ? WHERE bike_id = ?";
-		try (Connection connection = SQLConnection.getConnection();
+		try (Connection connection = DBConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			int parameterIndex = DaoUtility.setObjectFieldsForUpdate(statement, bike);
 			statement.setInt(parameterIndex, bike.getBikeId());
@@ -78,7 +78,7 @@ public class BikeDAO implements CrudDAO<Bike, Integer> {
 	public void delete(Integer bikeId) {
 		String sql = "DELETE FROM bikes WHERE bike_id = ?";
 
-		try (Connection connection = SQLConnection.getConnection();
+		try (Connection connection = DBConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			statement.setInt(1, bikeId);
 			int rowsAffected = statement.executeUpdate();

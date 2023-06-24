@@ -2,7 +2,7 @@ package dao;
 
 import Interface.CrudDAO;
 import model.BikeRental;
-import utilities.SQLConnection;
+import utilities.DBConnection;
 import dao.daoUtilities.DaoUtility;
 import dao.daoUtilities.StatusLogUtility;
 
@@ -17,7 +17,7 @@ public class BikeRentalDAO implements CrudDAO<BikeRental, Integer> {
 		String sql = "INSERT INTO bike_rentals (time_start, time_end, cost, user_id, bike_id, " +
 				"station_start_id, station_end_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-		try (Connection connection = SQLConnection.getConnection();
+		try (Connection connection = DBConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			DaoUtility.setObjectParameters(statement, bikeRental);
 			int rowsAffected = statement.executeUpdate();
@@ -39,7 +39,7 @@ public class BikeRentalDAO implements CrudDAO<BikeRental, Integer> {
 						" stationStartId, station_end_id AS stationEndId FROM bike_rentals WHERE " +
 						"rental_id = ?";
 
-		try (Connection connection = SQLConnection.getConnection(); PreparedStatement statement =
+		try (Connection connection = DBConnection.getConnection(); PreparedStatement statement =
 				connection.prepareStatement(sql)) {
 			statement.setInt(1, rentalId);
 			ResultSet resultSet = statement.executeQuery();
@@ -57,7 +57,7 @@ public class BikeRentalDAO implements CrudDAO<BikeRental, Integer> {
 				"SELECT rental_id AS rentalId, time_start AS timeStart, time_end AS " +
 						"timeEnd, cost, user_id AS userId, bike_id AS bikeId, station_start_id AS" +
 						" stationStartId, station_end_id AS stationEndId FROM bike_rentals;";
-		try (Connection connection = SQLConnection.getConnection();
+		try (Connection connection = DBConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			ResultSet resultSet = statement.executeQuery();
 			bikeRentals = DaoUtility.mapResultSetToObjectList(resultSet, BikeRental.class);
@@ -74,7 +74,7 @@ public class BikeRentalDAO implements CrudDAO<BikeRental, Integer> {
 				"user_id = ?, bike_id = ?, station_start_id = ?, station_end_id = ? WHERE " +
 				"rental_id = ?";
 
-		try (Connection connection = SQLConnection.getConnection();
+		try (Connection connection = DBConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			int parameterIndex = DaoUtility.setObjectFieldsForUpdate(statement, bikeRental);
 			statement.setInt(parameterIndex, bikeRental.getRentalId());
@@ -90,7 +90,7 @@ public class BikeRentalDAO implements CrudDAO<BikeRental, Integer> {
 	public void delete(Integer rentalId) {
 		String sql = "DELETE FROM bike_rentals WHERE rental_id = ?";
 
-		try (Connection connection = SQLConnection.getConnection();
+		try (Connection connection = DBConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			statement.setInt(1, rentalId);
 

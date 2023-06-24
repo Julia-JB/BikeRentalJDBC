@@ -20,24 +20,25 @@ import java.time.LocalDateTime;
 		private Point2D location;
 		@XmlElement(name = "organizerId")
 		private Integer organizerId;
+		private User user;
 
 		public Event() {
 		}
 
-		public Event(String name, LocalDateTime date, Point2D location, int organizerId) {
+		public Event(String name, LocalDateTime date, Point2D location, User user) {
 			this.name = name;
 			this.date = date;
 			this.location = location;
-			this.organizerId = organizerId;
+			this.user = user;
 		}
 
 		public Event(Integer eventId, String name, LocalDateTime date, Point2D location,
-		             Integer organizerId) {
+		             User user) {
 			this.eventId = eventId;
 			this.name = name;
 			this.date = date;
 			this.location = location;
-			this.organizerId = organizerId;
+			this.user = user;
 		}
 
 			@Override
@@ -47,7 +48,7 @@ import java.time.LocalDateTime;
 						", name='" + name + '\'' +
 						", date=" + date +
 						", location=" + location +
-						", organizerId=" + organizerId +
+						", user" + user +
 						'}';
 			}
 
@@ -90,5 +91,13 @@ import java.time.LocalDateTime;
 		public void setOrganizerId(int organizerId) {
 			this.organizerId = organizerId;
 		}
-	}
+
+			public User getUser() {
+				return user;
+			}
+
+			public void setUser(User user) {
+				this.user = user;
+			}
+		}
 

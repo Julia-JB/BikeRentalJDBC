@@ -2,7 +2,7 @@ package dao;
 
 import Interface.CrudDAO;
 import model.PassBikeRental;
-import utilities.SQLConnection;
+import utilities.DBConnection;
 import dao.daoUtilities.DaoUtility;
 import dao.daoUtilities.StatusLogUtility;
 
@@ -19,7 +19,7 @@ public class PassBikeRentalDAO implements CrudDAO<PassBikeRental, Integer> {
 		String sql = "INSERT INTO pass_bike_rentals (time_start, time_end, bike_id, " +
 				"station_start_id, station_end_id, pass_id, user_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-		try (Connection connection = SQLConnection.getConnection();
+		try (Connection connection = DBConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			DaoUtility.setObjectParameters(statement, passBikeRental);
 			int rowsAffected = statement.executeUpdate();
@@ -35,7 +35,7 @@ public class PassBikeRentalDAO implements CrudDAO<PassBikeRental, Integer> {
 				" timeEnd, bike_id AS bikeId, station_start_id AS stationStartId, station_end_id " +
 				" AS stationEndId, pass_id AS passId, user_id AS userId FROM pass_bike_rentals " +
 				"WHERE pass_rental_id = ?;";
-		try (Connection connection = SQLConnection.getConnection();
+		try (Connection connection = DBConnection.getConnection();
 		     PreparedStatement statement =
 				connection.prepareStatement(sql)) {
 			statement.setInt(1, passRentalId);
@@ -54,8 +54,8 @@ public class PassBikeRentalDAO implements CrudDAO<PassBikeRental, Integer> {
 		" timeEnd, bike_id AS bikeId, station_start_id AS stationStartId, station_end_id " +
 				"AS stationEndId, pass_id AS passId, user_id AS userId FROM pass_bike_rentals;";
 
-		try (Connection connection = SQLConnection.getConnection();
-		PreparedStatement statement = connection.prepareStatement(sql)) {
+		try (Connection connection = DBConnection.getConnection();
+		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			ResultSet resultSet = statement.executeQuery();
 			passBikeRentals = DaoUtility.mapResultSetToObjectList(resultSet,
 					PassBikeRental.class);
@@ -71,7 +71,7 @@ public class PassBikeRentalDAO implements CrudDAO<PassBikeRental, Integer> {
 				"station_start_id = ?, station_end_id = ?, pass_id = ?, user_id = ? WHERE " +
 				"pass_rental_id = ?;";
 
-		try (Connection connection = SQLConnection.getConnection();
+		try (Connection connection = DBConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			int parameterIndex = DaoUtility.setObjectFieldsForUpdate(statement, passBikeRental);
 			statement.setInt(parameterIndex, passBikeRental.getPassRentalId());
@@ -86,8 +86,8 @@ public class PassBikeRentalDAO implements CrudDAO<PassBikeRental, Integer> {
 	@Override
 	public void delete(Integer passRentalId) {
 		String sql = "DELETE FROM pass_bike_rentals WHERE pass_rental_id = ?";
-		try (Connection connection = SQLConnection.getConnection();
-		PreparedStatement statement = connection.prepareStatement(sql)) {
+		try (Connection connection = DBConnection.getConnection();
+		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			statement.setInt(1, passRentalId);
 
 			int rowsAffected = statement.executeUpdate();

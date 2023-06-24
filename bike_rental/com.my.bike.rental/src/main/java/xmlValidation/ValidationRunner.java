@@ -10,21 +10,14 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import utilities.Keys;
 
-import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Source;
-import javax.xml.transform.stream.StreamSource;
-import javax.xml.validation.Schema;
-import javax.xml.validation.SchemaFactory;
-import javax.xml.validation.Validator;
-import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
 
 
-public class Main {
+public class ValidationRunner {
 	public static void main (String[] args) {
 		Logger logger = LogManager.getLogger();
 
@@ -32,10 +25,10 @@ public class Main {
 
 		try {
 			// create a document builder
-			DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-
-			// validation the xml
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder documentBuilder = factory.newDocumentBuilder();
+
+			// validating xml document
 			factory.setValidating(true);
 			factory.setNamespaceAware(true);
 			factory.setFeature("http://apache.org/xml/features/validation/schema", true);

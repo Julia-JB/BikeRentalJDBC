@@ -22,7 +22,6 @@
         <collection property="maintenanceList" ofType="model.Maintenance" resultMap="mapper.MaintenanceMapper.maintenanceResultMap"/>
     </resultMap>
 
-
     <select id="selectAllTechnicians" resultMap="mapper.TechnicianMapper.technicianResultMap">
         select t.technician_id, t.first_name,
         t.last_name, t.phone_number, t.email,

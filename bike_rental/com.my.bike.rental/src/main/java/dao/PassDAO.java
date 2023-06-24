@@ -2,7 +2,7 @@ package dao;
 
 import Interface.CrudDAO;
 import model.Pass;
-import utilities.SQLConnection;
+import utilities.DBConnection;
 import dao.daoUtilities.DaoUtility;
 import dao.daoUtilities.StatusLogUtility;
 
@@ -18,7 +18,7 @@ public class PassDAO implements CrudDAO<Pass, Integer> {
 	public void save(Pass pass) {
 		String sql = "INSERT INTO passes (type, price, valid_from, valid_to, " +
 						"user_id) VALUES (?, ?, ?, ?, ?);";
-		try (Connection connection = SQLConnection.getConnection();
+		try (Connection connection = DBConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			DaoUtility.setObjectParameters(statement, pass);
 			int rowsAffected = statement.executeUpdate();
@@ -33,8 +33,8 @@ public class PassDAO implements CrudDAO<Pass, Integer> {
 		String sql = "SELECT pass_id AS passId, type, price, valid_from AS validFrom, valid_to AS" +
 				" validTo, user_id AS userId FROM passes WHERE pass_id = ?;";
 
-		try ( Connection connection = SQLConnection.getConnection();
-		      PreparedStatement statement = connection.prepareStatement(sql)) {
+		try (Connection connection = DBConnection.getConnection();
+		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			statement.setInt(1, passId);
 			ResultSet resultSet = statement.executeQuery();
 			Pass pass = DaoUtility.mapResultSetToObject(resultSet, Pass.class);
@@ -51,7 +51,7 @@ public class PassDAO implements CrudDAO<Pass, Integer> {
 		String sql = "SELECT pass_id AS passId, type, price, valid_from AS validFrom, valid_to AS" +
 				" validTo, user_id AS userId FROM passes;";
 
-		try (Connection connection = SQLConnection.getConnection();
+		try (Connection connection = DBConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			ResultSet resultSet = statement.executeQuery();
 			passes = DaoUtility.mapResultSetToObjectList(resultSet,
@@ -67,8 +67,8 @@ public class PassDAO implements CrudDAO<Pass, Integer> {
 		String sql = "UPDATE passes SET type = ?, price = ?, valid_from = ?, " +
 				"valid_to = ?, user_id = ? WHERE pass_id = ?";
 
-		try (   Connection connection = SQLConnection.getConnection();
-		        PreparedStatement statement = connection.prepareStatement(sql)) {
+		try (Connection connection = DBConnection.getConnection();
+		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			int parameterIndex = DaoUtility.setObjectFieldsForUpdate(statement, pass);
 			statement.setInt(parameterIndex, pass.getPassId());
 
@@ -81,8 +81,8 @@ public class PassDAO implements CrudDAO<Pass, Integer> {
 	@Override
 	public void delete(Integer passId) {
 		String sql = "DELETE FROM passes WHERE pass_id = ?";
-		try (   Connection connection = SQLConnection.getConnection();
-		        PreparedStatement statement = connection.prepareStatement(sql)) {
+		try (Connection connection = DBConnection.getConnection();
+		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			statement.setInt(1, passId);
 			int rowsAffected = statement.executeUpdate();
 			StatusLogUtility.logDeleteStatus(Pass.class, rowsAffected);

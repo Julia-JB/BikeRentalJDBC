@@ -2,7 +2,7 @@ package dao;
 
 import Interface.CrudDAO;
 import model.Feedback;
-import utilities.SQLConnection;
+import utilities.DBConnection;
 import dao.daoUtilities.DaoUtility;
 import dao.daoUtilities.StatusLogUtility;
 
@@ -14,7 +14,7 @@ public class FeedbackDAO implements CrudDAO<Feedback, Integer> {
 	@Override
 	public void save(Feedback feedback) {
 		String sql = "INSERT INTO feedback (date, rating, comments, user_id) VALUES (?, ?, ?, ?);";
-		try (Connection connection = SQLConnection.getConnection();
+		try (Connection connection = DBConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			DaoUtility.setObjectParameters(statement, feedback);
 			int rowsAffected = statement.executeUpdate();
@@ -28,8 +28,8 @@ public class FeedbackDAO implements CrudDAO<Feedback, Integer> {
 	public Feedback getById(Integer feedbackId) {
 		String sql = "SELECT feedback_id AS feedbackId, date, rating, comments, user_id AS userId" +
 				" FROM feedback WHERE feedback_id = ?;";
-		try ( Connection connection = SQLConnection.getConnection();
-				PreparedStatement statement =
+		try (Connection connection = DBConnection.getConnection();
+		     PreparedStatement statement =
 				connection.prepareStatement(sql)) {
 			statement.setInt(1, feedbackId);
 			ResultSet resultSet = statement.executeQuery();
@@ -47,8 +47,8 @@ public class FeedbackDAO implements CrudDAO<Feedback, Integer> {
 			String sql = "SELECT feedback_id AS feedbackId, date, rating, comments, user_id AS userId" +
 					" FROM feedback;";
 
-			try (   Connection connection = SQLConnection.getConnection();
-					PreparedStatement statement = connection.prepareStatement(sql)) {
+			try (Connection connection = DBConnection.getConnection();
+			     PreparedStatement statement = connection.prepareStatement(sql)) {
 				 ResultSet resultSet = statement.executeQuery();
 				  feedbacks = DaoUtility.mapResultSetToObjectList(resultSet, Feedback.class);
 				} catch (SQLException | InstantiationException | IllegalAccessException e) {
@@ -61,8 +61,8 @@ public class FeedbackDAO implements CrudDAO<Feedback, Integer> {
 		String sql = "UPDATE feedback SET date = ?, rating = ?, comments = ?, user_id = ? WHERE " +
 				"feedback_id = ?";
 
-		try (   Connection connection = SQLConnection.getConnection();
-				PreparedStatement statement = connection.prepareStatement(sql)) {
+		try (Connection connection = DBConnection.getConnection();
+		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			int parameterIndex = DaoUtility.setObjectFieldsForUpdate(statement, feedback);
 			statement.setInt(parameterIndex, feedback.getFeedbackId());
 
@@ -76,8 +76,8 @@ public class FeedbackDAO implements CrudDAO<Feedback, Integer> {
 	@Override
 	public void delete(Integer feedbackId) {
 		String sql = "DELETE FROM users WHERE user_id = ?";
-		try (   Connection connection = SQLConnection.getConnection();
-				PreparedStatement statement = connection.prepareStatement(sql)) {
+		try (Connection connection = DBConnection.getConnection();
+		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			statement.setInt(1, feedbackId);
 			int rowsAffected = statement.executeUpdate();
 			StatusLogUtility.logDeleteStatus(Feedback.class, rowsAffected);

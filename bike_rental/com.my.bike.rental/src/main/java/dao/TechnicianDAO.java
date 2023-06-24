@@ -2,7 +2,7 @@ package dao;
 import Interface.CrudDAO;
 import model.Maintenance;
 import model.Technician;
-import utilities.SQLConnection;
+import utilities.DBConnection;
 import dao.daoUtilities.DaoUtility;
 import dao.daoUtilities.StatusLogUtility;
 
@@ -16,7 +16,7 @@ public class TechnicianDAO implements CrudDAO<Technician, Integer> {
 	public void save(Technician technician) {
 		String sql = "INSERT INTO technicians (first_name, last_name, phone_number, email) VALUES" +
 				" (?, ?, ?, ?);";
-		try (Connection connection = SQLConnection.getConnection();
+		try (Connection connection = DBConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			DaoUtility.setObjectParameters(statement, technician);
 			int rowsAffected = statement.executeUpdate();
@@ -34,7 +34,7 @@ public class TechnicianDAO implements CrudDAO<Technician, Integer> {
 				"LEFT JOIN maintenance ON technicians.technician_id = maintenance.technician_id " +
 				"WHERE technicians.technician_id = ?";
 
-		try (Connection connection = SQLConnection.getConnection();
+		try (Connection connection = DBConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			statement.setInt(1, technicianId);
 			ResultSet resultSet = statement.executeQuery();
@@ -80,7 +80,7 @@ public class TechnicianDAO implements CrudDAO<Technician, Integer> {
 				"FROM technicians " +
 				"LEFT JOIN maintenance ON technicians.technician_id = maintenance.technician_id;";
 
-		try (Connection connection = SQLConnection.getConnection();
+		try (Connection connection = DBConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql);
 		     ResultSet resultSet = statement.executeQuery()) {
 
@@ -133,8 +133,8 @@ public class TechnicianDAO implements CrudDAO<Technician, Integer> {
 	public void update(Technician technician) {
 		String sql = "UPDATE technicians SET first_name = ?, last_name = ?, phone_number = ?, " +
 				"email = ? WHERE technician_id = ?";
-		try (   Connection connection = SQLConnection.getConnection();
-		        PreparedStatement statement = connection.prepareStatement(sql)) {
+		try (Connection connection = DBConnection.getConnection();
+		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			int parameterIndex = DaoUtility.setObjectFieldsForUpdate(statement, technician);
 			statement.setInt(parameterIndex, technician.getTechnicianId());
 
@@ -148,8 +148,8 @@ public class TechnicianDAO implements CrudDAO<Technician, Integer> {
 	@Override
 	public void delete(Integer technicianId) {
 		String sql = "DELETE FROM technicians WHERE technician_id = ?;";
-		try (   Connection connection = SQLConnection.getConnection();
-		        PreparedStatement statement = connection.prepareStatement(sql)) {
+		try (Connection connection = DBConnection.getConnection();
+		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			statement.setInt(1, technicianId);
 			int rowsAffected = statement.executeUpdate();
 			StatusLogUtility.logDeleteStatus(Technician.class, rowsAffected);

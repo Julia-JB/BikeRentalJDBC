@@ -1,4 +1,4 @@
-package service;
+package serviceDAO;
 
 import dao.BikeDAO;
 import model.Bike;

@@ -2,7 +2,7 @@
 import model.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import service.*;
+import serviceDAO.*;
 import java.awt.geom.Point2D;
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -42,7 +42,7 @@ public class Main {
 
 		// Create
 		LocalDateTime dateTime = LocalDateTime.of(2023, 6, 20, 10, 0, 0);
-		Event event2 = new Event("Pedalpalooza", dateTime, new Point2D.Double(42.0942, 19.1333), 3);
+		Event event2 = new Event("Pedalpalooza", dateTime, new Point2D.Double(42.0942, 19.1333), user1);
 
 		EventService eventService = new EventService();
 		eventService.insertEvent(event2);

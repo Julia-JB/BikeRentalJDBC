@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 
-public class SQLConnection {
+public class DBConnection {
 		private static final String url = Keys.SQL_URL.getKey();
 		private static final String USERNAME = Keys.SQL_USERNAME.getKey();
 		private static final String PASSWORD = Keys.SQL_PASSWORD.getKey();

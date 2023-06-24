@@ -2,7 +2,7 @@ package dao;
 
 import Interface.CrudDAO;
 import model.Maintenance;
-import utilities.SQLConnection;
+import utilities.DBConnection;
 import dao.daoUtilities.DaoUtility;
 import dao.daoUtilities.StatusLogUtility;
 
@@ -18,7 +18,7 @@ public class MaintenanceDAO implements CrudDAO<Maintenance, Integer> {
 	public void save(Maintenance maintenance) {
 		String sql = "INSERT INTO maintenance (date_start, date_end, description, bike_id, " +
 						"technician_id) VALUES (?, ?, ?, ?, ?);";
-		try (Connection connection = SQLConnection.getConnection();
+		try (Connection connection = DBConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			DaoUtility.setObjectParameters(statement, maintenance);
 			int rowsAffected = statement.executeUpdate();
@@ -33,8 +33,8 @@ public class MaintenanceDAO implements CrudDAO<Maintenance, Integer> {
 		String sql = "SELECT maintenance_id AS maintenanceId, date_start AS dateStart, date_end " +
 				"AS dateEnd, description, bike_id AS bikeId, technician_id AS technicianId FROM " +
 				"maintenance WHERE maintenance_id = ?;";
-		try ( Connection connection = SQLConnection.getConnection();
-		      PreparedStatement statement = connection.prepareStatement(sql)) {
+		try (Connection connection = DBConnection.getConnection();
+		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			statement.setInt(1, maintenanceId);
 			ResultSet resultSet = statement.executeQuery();
 			Maintenance maintenance = DaoUtility.mapResultSetToObject(resultSet, Maintenance.class);
@@ -52,8 +52,8 @@ public class MaintenanceDAO implements CrudDAO<Maintenance, Integer> {
 				"AS dateEnd, description, bike_id AS bikeId, technician_id AS technicianId FROM " +
 				"maintenance;";
 
-		try (Connection connection = SQLConnection.getConnection();
-		        PreparedStatement statement = connection.prepareStatement(sql)) {
+		try (Connection connection = DBConnection.getConnection();
+		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			ResultSet resultSet = statement.executeQuery();
 			maintenanceEntries = DaoUtility.mapResultSetToObjectList(resultSet,
 					Maintenance.class);
@@ -68,8 +68,8 @@ public class MaintenanceDAO implements CrudDAO<Maintenance, Integer> {
 		String sql = "UPDATE maintenance SET date_start = ?, date_end = ?, description = ?, " +
 				"bike_id = ?, technician_id = ? WHERE maintenance_id = ?";
 
-		try (   Connection connection = SQLConnection.getConnection();
-		        PreparedStatement statement = connection.prepareStatement(sql)) {
+		try (Connection connection = DBConnection.getConnection();
+		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			int parameterIndex = DaoUtility.setObjectFieldsForUpdate(statement, maintenance);
 			statement.setInt(parameterIndex, maintenance.getMaintenanceId());
 
@@ -83,8 +83,8 @@ public class MaintenanceDAO implements CrudDAO<Maintenance, Integer> {
 	@Override
 	public void delete(Integer maintenanceId) {
 		String sql = "DELETE FROM maintenance WHERE maintenance_id = ?";
-		try (   Connection connection = SQLConnection.getConnection();
-		        PreparedStatement statement = connection.prepareStatement(sql)) {
+		try (Connection connection = DBConnection.getConnection();
+		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			statement.setInt(1, maintenanceId);
 			int rowsAffected = statement.executeUpdate();
 		StatusLogUtility.logDeleteStatus(Maintenance.class, rowsAffected);

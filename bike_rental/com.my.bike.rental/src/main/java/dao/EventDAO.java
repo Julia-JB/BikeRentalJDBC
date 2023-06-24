@@ -2,7 +2,7 @@ package dao;
 
 import Interface.CrudDAO;
 import model.Event;
-import utilities.SQLConnection;
+import utilities.DBConnection;
 import dao.daoUtilities.DaoUtility;
 import dao.daoUtilities.StatusLogUtility;
 
@@ -17,7 +17,7 @@ public class EventDAO implements CrudDAO<Event, Integer> {
 	public void save(Event event) {
 		String sql = "INSERT INTO events (name, date, location, organizer_id) VALUES (?, ?, POINT" +
 				"(?, ?), ?)";
-		try (Connection connection = SQLConnection.getConnection();
+		try (Connection connection = DBConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			setParameters(statement, event);
 			int rowsAffected  = statement.executeUpdate();
@@ -31,7 +31,7 @@ public class EventDAO implements CrudDAO<Event, Integer> {
 	public Event getById(Integer eventId) {
 		String sql = "SELECT event_id , name, date, ST_AsText(location) AS locationStr," +
 				" organizer_id FROM events WHERE event_id = ?";
-		try (Connection connection = SQLConnection.getConnection();
+		try (Connection connection = DBConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			statement.setInt(1, eventId);
 			ResultSet resultSet = statement.executeQuery();
@@ -51,7 +51,7 @@ public class EventDAO implements CrudDAO<Event, Integer> {
 		List<Event> events = new ArrayList<>();
 		String sql = "SELECT event_id , name, date, ST_AsText(location) AS locationStr, " +
 				"organizer_id FROM events";
-		try (Connection connection = SQLConnection.getConnection();
+		try (Connection connection = DBConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			ResultSet resultSet = statement.executeQuery();
 			while (resultSet.next()) {
@@ -68,7 +68,7 @@ public class EventDAO implements CrudDAO<Event, Integer> {
 	public void update(Event event) {
 		String sql = "UPDATE events SET name = ?, date = ?, location = POINT(?, ?), organizer_id " +
 				"= ? WHERE event_id = ?";
-		try (Connection connection = SQLConnection.getConnection();
+		try (Connection connection = DBConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			setParameters(statement, event);
 
@@ -84,7 +84,7 @@ public class EventDAO implements CrudDAO<Event, Integer> {
 	public void delete(Integer eventId) {
 		String sql = "DELETE FROM events WHERE event_id = ?";
 
-		try (Connection connection = SQLConnection.getConnection();
+		try (Connection connection = DBConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			statement.setInt(1, eventId);
 

@@ -2,7 +2,7 @@ package dao;
 
 import Interface.CrudDAO;
 import model.RentalTransaction;
-import utilities.SQLConnection;
+import utilities.DBConnection;
 import dao.daoUtilities.DaoUtility;
 import dao.daoUtilities.StatusLogUtility;
 
@@ -18,7 +18,7 @@ public class RentalTransactionDAO implements CrudDAO<RentalTransaction, Integer>
 	public void save(RentalTransaction rentalTransaction) {
 		String sql = "INSERT INTO rental_transactions (date, type, amount, user_id, rental_id) " +
 						"VALUES (?, ?, ?, ?, ?);";
-		try (Connection connection = SQLConnection.getConnection();
+		try (Connection connection = DBConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			DaoUtility.setObjectParameters(statement, rentalTransaction);
 			int rowsAffected = statement.executeUpdate();
@@ -33,8 +33,8 @@ public class RentalTransactionDAO implements CrudDAO<RentalTransaction, Integer>
 		String sql = "SELECT transaction_id AS transactionId, date AS dateTime, type, amount, " +
 				"user_id AS userId, rental_id as rentalId FROM rental_transactions WHERE " +
 				"transaction_id = ?;";
-		try ( Connection connection = SQLConnection.getConnection();
-		      PreparedStatement statement =
+		try (Connection connection = DBConnection.getConnection();
+		     PreparedStatement statement =
 				      connection.prepareStatement(sql)) {
 			statement.setInt(1, transactionId);
 			ResultSet resultSet = statement.executeQuery();
@@ -52,8 +52,8 @@ public class RentalTransactionDAO implements CrudDAO<RentalTransaction, Integer>
 		List<RentalTransaction> transactions = new ArrayList<>();
 		String sql = "SELECT transaction_id AS transactionId, date AS dateTime, type, amount, " +
 				"user_id AS userId, rental_id as rentalId FROM rental_transactions;";
-		try (   Connection connection = SQLConnection.getConnection();
-		        PreparedStatement statement = connection.prepareStatement(sql)) {
+		try (Connection connection = DBConnection.getConnection();
+		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			ResultSet resultSet = statement.executeQuery();
 			transactions = DaoUtility.mapResultSetToObjectList(resultSet,
 					RentalTransaction.class);
@@ -67,8 +67,8 @@ public class RentalTransactionDAO implements CrudDAO<RentalTransaction, Integer>
 	public void update(RentalTransaction rentalTransaction) {
 		String sql = "UPDATE rental_transactions SET date = ?, type = ?, amount = ?, user_id = ?," +
 				" rental_id = ? WHERE transaction_id = ?";
-		try (   Connection connection = SQLConnection.getConnection();
-		        PreparedStatement statement = connection.prepareStatement(sql)) {
+		try (Connection connection = DBConnection.getConnection();
+		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			int parameterIndex = DaoUtility.setObjectFieldsForUpdate(statement, rentalTransaction);
 			statement.setInt(parameterIndex, rentalTransaction.getTransactionId());
 
@@ -82,8 +82,8 @@ public class RentalTransactionDAO implements CrudDAO<RentalTransaction, Integer>
 	@Override
 	public void delete(Integer transactionId) {
 		String sql = "DELETE FROM rental_transactions WHERE transaction_id = ?";
-		try (   Connection connection = SQLConnection.getConnection();
-		        PreparedStatement statement = connection.prepareStatement(sql)) {
+		try (Connection connection = DBConnection.getConnection();
+		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			statement.setInt(1, transactionId);
 			int rowsAffected = statement.executeUpdate();
 			StatusLogUtility.logDeleteStatus(RentalTransaction.class, rowsAffected);

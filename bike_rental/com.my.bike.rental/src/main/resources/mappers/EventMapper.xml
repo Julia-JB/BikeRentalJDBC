@@ -4,18 +4,27 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.EventMapper">
     <select id="selectEventById" resultType="model.Event" resultMap="mapper.EventMapper.eventResultMap">
-        select event_id, name, date, ST_AsText(location) as location, organizer_id from events where event_id = #{id}
+        select event_id, name, date, ST_AsText(location) as location,
+        u.user_id, u.first_name, u.last_name, u.email, u.date_registered
+        from events e
+        left join users u
+        on e.organizer_id = u.user_id
+        where event_id = #{id}
     </select>
     <resultMap id="eventResultMap" type="model.Event" autoMapping="false">
         <result column="event_id" property="eventId" />
         <result column="name" property="name" />
         <result column="date" property="date" />
         <result column="location" property="location" typeHandler="mapper.Point2DTypeHandler" />
-        <result column="organizer_id" property="organizerId" />
+        <association property="user" resultMap="mapper.UserMapper.userResultMap"/>
     </resultMap>
 
     <select id="selectAllEvents" resultType="model.Event" resultMap="mapper.EventMapper.eventResultMap">
-        select event_id, name, date, ST_AsText(location) as location, organizer_id from events
+        select event_id, name, date, ST_AsText(location) as location,
+        u.user_id, u.first_name, u.last_name, u.email, u.date_registered
+        from events e
+        left join users u
+        on e.organizer_id = u.user_id
     </select>
 
     <insert id="addEvent">

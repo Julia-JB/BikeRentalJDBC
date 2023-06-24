@@ -4,7 +4,7 @@ import model.Station;
 import model.Technician;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import service.StationService;
+import serviceDAO.StationService;
 import utilities.Keys;
 
 import javax.xml.bind.JAXBContext;
@@ -13,13 +13,13 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.*;
 
-public class Main {
+public class JAXBRunner {
 	public static void main(String[] args) {
 
 		Logger logger = LogManager.getLogger();
 		File technicianInput = new File(Keys.TECHNICIAN_INPUT.getKey());
 
-		// complex objects  - unmarshalling (date, list)
+		// Handling complex objects  - unmarshalling (date, list)
 
 		try  {
 			JAXBContext jaxbContext = JAXBContext.newInstance(Technician.class);

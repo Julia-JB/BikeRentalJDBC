@@ -2,7 +2,7 @@ package dao;
 
 import Interface.CrudDAO;
 import model.Station;
-import utilities.SQLConnection;
+import utilities.DBConnection;
 import dao.daoUtilities.DaoUtility;
 import dao.daoUtilities.StatusLogUtility;
 
@@ -19,7 +19,7 @@ public class StationDAO implements CrudDAO<Station, Integer> {
 		Point2D point = station.getLocation();
 		String sql = "INSERT INTO stations (name, location, capacity) VALUES (?, POINT(?, ?), ?)";
 
-		try (Connection connection = SQLConnection.getConnection();
+		try (Connection connection = DBConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
 
 			setParameters(statement, station);
@@ -36,8 +36,8 @@ public class StationDAO implements CrudDAO<Station, Integer> {
 		String sql = "SELECT station_id, name, ST_AsText(location) AS locationStr, capacity FROM " +
 				"stations WHERE station_id = ?";
 
-		try (Connection connection = SQLConnection.getConnection();
-		PreparedStatement statement = connection.prepareStatement(sql)) {
+		try (Connection connection = DBConnection.getConnection();
+		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			statement.setInt(1, stationId);
 			ResultSet resultSet = statement.executeQuery();
 
@@ -56,8 +56,8 @@ public class StationDAO implements CrudDAO<Station, Integer> {
 		List<Station> stations = new ArrayList<>();
 		String sql = "SELECT station_id, name, ST_AsText(location) AS locationStr, capacity FROM " +
 				"stations";
-		try (Connection connection = SQLConnection.getConnection();
-		PreparedStatement statement = connection.prepareStatement(sql)) {
+		try (Connection connection = DBConnection.getConnection();
+		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			ResultSet resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				Station station = mapToStationObject(resultSet);
@@ -74,7 +74,7 @@ public class StationDAO implements CrudDAO<Station, Integer> {
 		String sql = "UPDATE stations SET name = ?, location = POINT(?, ?), capacity = ? WHERE " +
 				"station_id = ?";
 
-		try (Connection connection = SQLConnection.getConnection();
+		try (Connection connection = DBConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
 
 			setParameters(statement, station);
@@ -90,7 +90,7 @@ public class StationDAO implements CrudDAO<Station, Integer> {
 	public void delete(Integer stationId) {
 		String sql = "DELETE FROM stations WHERE station_id = ?";
 
-		try (Connection connection = SQLConnection.getConnection();
+		try (Connection connection = DBConnection.getConnection();
 		     PreparedStatement statement = connection.prepareStatement(sql)) {
 			 statement.setInt(1, stationId);
 

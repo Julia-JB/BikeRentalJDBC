@@ -23,6 +23,8 @@ public class BikeCreator {
 
 		logger.info(streetBike);
 
+		// Different representations of the object without multiple constructors
+
 		Bike mountainBike = new Bike.BikeBuilder().brand("MountainScape")
 				.status("MAINTAINED")
 				.build();

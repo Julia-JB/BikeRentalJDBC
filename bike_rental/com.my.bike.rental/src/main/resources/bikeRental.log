@@ -17,7 +17,7 @@ Last name: Wickham
 Email: natwick@gmail.com
 Date registered: 2023-04-18
 
-2023-06-07 13:04:04.360 INFO xmlValidation.ValidationRunner 48 main - XML is valid.
+2023-06-07 13:04:04.360 INFO xmlValidation.ParserRunner 48 main - XML is valid.
 
 2023-06-11 22:49:54.021 INFO jaxb.JAXBRunner 26 main - Technician object created from XML - unmarshalling: Technician{technicianId=1, firstName='Matt', lastName='Brown', phoneNumber='null', email='mattbrown@citybikes.com', maintenanceList=[Maintenance{maintenanceId=2, dateStart=Sun May 28 00:00:00 PDT 2023, dateEnd=null, description='brakes check', bikeId=4, technicianId=1}, Maintenance{maintenanceId=4, dateStart=Tue May 30 00:00:00 PDT 2023, dateEnd=Sun Jun 04 00:00:00 PDT 2023, description='tyres changes', bikeId=2, technicianId=1}]}
 
@@ -89,3 +89,39 @@ Brand: Street Runner
 Properties: {"gears": 8, "model": "CityCruiser", "brakeType": "Rim brakes", "wheelSize": "26 inches", "suspension": false, "frameMaterial": "Steel", "basketIncluded": true}
 Status: AVAILABLE
 Current Station: 4
+2023-06-26 21:47:24.296 WARN xmlValidation.ParserRunner 70 main - XML is not valid. Error: schema_reference.4: Failed to read schema document 'file:/Users/juliabatsheva/Documents/sqlPractice/bike_rental/Users/juliabatsheva/Documents/sqlPractice/bike_rental/com.my.bike.rental/src/main/java/xmlValidation/resources/users.xsd', because 1) could not find the document; 2) the document could not be read; 3) the root element of the document is not <xsd:schema>.
+2023-06-26 21:50:55.627 INFO xmlValidation.ParserRunner 67 main - Number of users: 3
+2023-06-26 21:50:55.630 INFO xmlValidation.ParserRunner 68 main -
+User ID: 7
+First Name Nataly
+Last name: Wickham
+Email: natwick@gmail.com
+Date registered: 2023-04-18
+2023-06-26 21:53:18.264 WARN xmlValidation.ParserRunner 68 main - XML is not valid. Error: s4s-elt-character: Non-whitespace characters are not allowed in schema elements other than 'xs:appinfo' and 'xs:documentation'. Saw '7'.
+2023-06-26 21:54:24.515 WARN xmlValidation.ParserRunner 68 main - XML is not valid. Error: s4s-elt-character: Non-whitespace characters are not allowed in schema elements other than 'xs:appinfo' and 'xs:documentation'. Saw '7'.
+2023-06-26 21:55:51.987 WARN xmlValidation.ParserRunner 68 main - XML is not valid. Error: s4s-elt-character: Non-whitespace characters are not allowed in schema elements other than 'xs:appinfo' and 'xs:documentation'. Saw '7'.
+2023-06-26 22:00:22.809 WARN xmlValidation.ParserRunner 70 main - XML is not valid. Error: schema_reference.4: Failed to read schema document 'file:/Users/juliabatsheva/Documents/sqlPractice/bike_rental/Users/juliabatsheva/Documents/sqlPractice/bike_rental/com.my.bike.rental/src/main/java/xmlValidation/resources/users.xsd', because 1) could not find the document; 2) the document could not be read; 3) the root element of the document is not <xsd:schema>.
+2023-06-26 22:03:25.311 WARN xmlValidation.ParserRunner 71 main - XML is not valid. Error: schema_reference.4: Failed to read schema document 'file:/Users/juliabatsheva/Documents/sqlPractice/bike_rental/Users/juliabatsheva/Documents/sqlPractice/bike_rental/com.my.bike.rental/src/main/java/xmlValidation/resources/users.xsd', because 1) could not find the document; 2) the document could not be read; 3) the root element of the document is not <xsd:schema>.
+2023-06-26 22:20:27.028 WARN xmlValidation.ParserRunner 74 main - XML is not valid. Error: /Users/juliabatsheva/Documents/sqlPractice/bike_rental/com.my.bike.rental/src/main/java/xmlValidation/resources/users.xml).getKey() (No such file or directory)
+2023-06-26 22:20:46.159 INFO xmlValidation.ParserRunner 70 main - Number of users: 3
+2023-06-26 22:20:46.163 INFO xmlValidation.ParserRunner 71 main -
+User ID: 7
+First Name Nataly
+Last name: Wickham
+Email: natwick@gmail.com
+Date registered: 2023-04-18
+2023-06-26 22:28:04.483 INFO xmlValidation.ParserRunner 67 main - Number of users: 3
+2023-06-26 22:28:04.486 INFO xmlValidation.ParserRunner 68 main -
+User ID: 7
+First Name Nataly
+Last name: Wickham
+Email: natwick@gmail.com
+Date registered: 2023-04-18
+2023-06-26 23:18:36.699 INFO xmlValidation.ParserXML 80 validateXmlFile - XML is valid.
+2023-06-26 23:18:36.702 INFO xmlValidation.ParserRunner 17 main - 3
+2023-06-26 23:18:36.706 INFO xmlValidation.ParserRunner 21 main - 
+User ID: 9
+First Name Tom
+Last name: Fredrikson
+Email: fredrikson@gmail.com
+Date registered: 2023-05-30

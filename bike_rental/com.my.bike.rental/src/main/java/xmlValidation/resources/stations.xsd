@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:element name="stations" type="StationType"/>
-
     <xs:complexType name="StationsType">
         <xs:sequence>
             <xs:element name="station" type="StationType" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
-
     <xs:complexType name="StationType">
         <xs:sequence>
             <xs:element name="stationId" type="xs:int"/>
@@ -16,5 +14,4 @@
             <xs:element name="capacity" type="xs:int"/>
         </xs:sequence>
     </xs:complexType>
-
 </xs:schema>

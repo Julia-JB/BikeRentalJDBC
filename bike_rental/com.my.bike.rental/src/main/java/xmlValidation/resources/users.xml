@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <users xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.w3.org/2001/XMLSchema-instance users.xsd ">
+      xsi:schemaLocation="http://www.w3.org/2001/XMLSchema-instance users.xsd">
     <user>
     <userId>7</userId>
     <firstName>Nataly</firstName>

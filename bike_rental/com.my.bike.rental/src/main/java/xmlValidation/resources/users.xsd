@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:element name="users" type="UsersType"/>
-
     <xs:complexType name="UsersType">
         <xs:sequence>
             <xs:element name="user" type="UserType" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
-
     <xs:complexType name="UserType">
         <xs:sequence>
             <xs:element name="userId" type="xs:int"/>
@@ -17,5 +15,4 @@
             <xs:element name="dateRegistered" type="xs:date"/>
         </xs:sequence>
     </xs:complexType>
-
 </xs:schema>

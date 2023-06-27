@@ -113,5 +113,7 @@ Current Station: 0
 2023-06-27 01:02:17.288 INFO designPatterns.singleton.BikeRentalManager 23 rentBike - Bike rented successfully
 2023-06-27 01:02:17.289 INFO designPatterns.singleton.Main 19 main - rented
 
-
-2023-06-27 13:34:03.119 INFO designPatterns.decorator.Main 12 main - Decorated string: STRING TO BE DECORATED
+2023-06-27 13:50:51.189 INFO designPatterns.decorator.BasicBike 9 assemble - Basic bike assembled.
+2023-06-27 13:50:51.191 INFO designPatterns.decorator.MountainBikeDecorator 17 addMountainBikeFeatures - Adding features of a mountain bike: suspension, wider tires, and off-road gearing.
+2023-06-27 13:50:51.191 INFO designPatterns.decorator.BasicBike 9 assemble - Basic bike assembled.
+2023-06-27 13:50:51.191 INFO designPatterns.decorator.StreetBikeDecorator 17 addStreetBikeFeatures - Adding features of a street bike: sleek design, narrow tires, and upright handlebars.

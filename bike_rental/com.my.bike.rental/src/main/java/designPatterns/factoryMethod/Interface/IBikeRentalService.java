@@ -1,4 +1,4 @@
-package designPatterns.serviceInterface;
+package designPatterns.factoryMethod.Interface;
 
 import model.BikeRental;
 

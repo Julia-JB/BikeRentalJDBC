@@ -1,6 +1,6 @@
 package serviceMyBatis;
 
-import designPatterns.serviceInterface.ITechnicianService;
+import designPatterns.factoryMethod.Interface.ITechnicianService;
 import mapper.TechnicianMapper;
 import model.Technician;
 import org.apache.ibatis.io.Resources;

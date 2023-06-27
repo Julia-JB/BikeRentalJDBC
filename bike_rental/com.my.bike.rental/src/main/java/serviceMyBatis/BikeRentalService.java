@@ -1,5 +1,5 @@
 package serviceMyBatis;
-import designPatterns.serviceInterface.IBikeRentalService;
+import designPatterns.factoryMethod.Interface.IBikeRentalService;
 import mapper.BikeRentalMapper;
 import model.BikeRental;
 import org.apache.ibatis.io.Resources;

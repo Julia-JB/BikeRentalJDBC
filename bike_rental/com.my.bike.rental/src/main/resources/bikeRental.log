@@ -82,7 +82,7 @@ Properties: {"gears": 18, "model": "SpeedRunner", "brakeType": "Caliper brakes",
 Status: Maintained
 Current Station: 0
 
-2023-06-26 19:44:46.124 ERROR designPatterns.ServiceFactory 21 createBikeService - Unknown service requested. For user service implementation enter "mybatis" or "dao"
+2023-06-26 19:44:46.124 ERROR designPatterns.factoryMethod.ServiceFactory 21 createBikeService - Unknown service requested. For user service implementation enter "mybatis" or "dao"
 2023-06-26 20:33:30.098 INFO designPatterns.Main 44 main - Bike object:
 Bike ID: 0
 Brand: Street Runner
@@ -125,3 +125,60 @@ First Name Tom
 Last name: Fredrikson
 Email: fredrikson@gmail.com
 Date registered: 2023-05-30
+2023-06-26 23:46:28.710 INFO designPatterns.Main 25 main - BikeService implementation: serviceMyBatis.BikeService
+2023-06-26 23:46:28.714 INFO designPatterns.Main 26 main - Retrieving data using ServiceMyBatis:
+Bike ID: 5
+Brand: City Journey
+Properties: {"gears": 8, "model": "CityCruiser", "brakeType": "Rim brakes", "wheelSize": "26 inches", "suspension": false, "frameMaterial": "Steel", "basketIncluded": true}
+Status: AVAILABLE
+Current Station: 1
+2023-06-26 23:46:28.736 INFO designPatterns.Main 32 main - BikeService implementation: serviceDAO.BikeService
+2023-06-26 23:46:28.736 INFO designPatterns.Main 33 main - Retrieving data using ServiceDAO:
+Bike ID: 4
+Brand: RoadBikeCorp
+Properties: {"gears": 18, "model": "SpeedRunner", "brakeType": "Caliper brakes", "wheelSize": "28 inches", "suspension": false, "frameMaterial": "Carbon Fiber", "basketIncluded": false}
+Status: Maintained
+Current Station: 0
+2023-06-26 23:46:28.736 ERROR designPatterns.factoryMethod.ServiceFactory 22 createBikeService - Unknown service requested. For user service implementation enter "mybatis" or "dao"
+2023-06-26 23:47:04.474 INFO designPatterns.Main 25 main - BikeService implementation: serviceMyBatis.BikeService
+2023-06-26 23:47:04.478 INFO designPatterns.Main 26 main - Retrieving data using ServiceMyBatis:
+Bike ID: 5
+Brand: City Journey
+Properties: {"gears": 8, "model": "CityCruiser", "brakeType": "Rim brakes", "wheelSize": "26 inches", "suspension": false, "frameMaterial": "Steel", "basketIncluded": true}
+Status: AVAILABLE
+Current Station: 1
+2023-06-26 23:47:04.526 INFO designPatterns.Main 32 main - BikeService implementation: serviceDAO.BikeService
+2023-06-26 23:47:04.526 INFO designPatterns.Main 33 main - Retrieving data using ServiceDAO:
+Bike ID: 4
+Brand: RoadBikeCorp
+Properties: {"gears": 18, "model": "SpeedRunner", "brakeType": "Caliper brakes", "wheelSize": "28 inches", "suspension": false, "frameMaterial": "Carbon Fiber", "basketIncluded": false}
+Status: Maintained
+Current Station: 0
+2023-06-26 23:47:04.526 INFO designPatterns.Main 51 main - Bike object:
+Bike ID: 0
+Brand: Street Runner
+Properties: {"gears": 8, "model": "CityCruiser", "brakeType": "Rim brakes", "wheelSize": "26 inches", "suspension": false, "frameMaterial": "Steel", "basketIncluded": true}
+Status: AVAILABLE
+Current Station: 4
+2023-06-27 00:24:56.126 INFO designPatterns.builder.BikeCreator 24 main - 
+Bike ID: 0
+Brand: Street Runner
+Properties: {"gears": 8, "model": "CityCruiser", "brakeType": "Rim brakes", "wheelSize": "26 inches", "suspension": false, "frameMaterial": "Steel", "basketIncluded": true}
+Status: AVAILABLE
+Current Station: 4
+2023-06-27 00:24:56.127 INFO designPatterns.builder.BikeCreator 30 main - 
+Bike ID: 0
+Brand: MountainScape
+Properties: null
+Status: MAINTAINED
+Current Station: 0
+2023-06-27 00:24:56.127 INFO designPatterns.builder.BikeCreator 34 main - 
+Bike ID: 0
+Brand: KTM
+Properties: null
+Status: null
+Current Station: 0
+2023-06-27 01:00:13.876 INFO designPatterns.singleton.BikeRentalManager 23 rentBike - Sorry, the bike is not available for rent.
+2023-06-27 01:00:58.275 INFO designPatterns.singleton.BikeRentalManager 23 rentBike - Bike rented successfully
+2023-06-27 01:02:17.288 INFO designPatterns.singleton.BikeRentalManager 23 rentBike - Bike rented successfully
+2023-06-27 01:02:17.289 INFO designPatterns.singleton.Main 19 main - rented

@@ -1,4 +1,4 @@
-package designPatterns;
+package designPatterns.factoryMethod;
 
 public class InvalidServiceException extends IllegalArgumentException {
 	public InvalidServiceException() {

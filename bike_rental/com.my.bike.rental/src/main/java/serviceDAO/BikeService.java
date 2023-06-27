@@ -2,7 +2,7 @@ package serviceDAO;
 
 import dao.BikeDAO;
 import model.Bike;
-import designPatterns.serviceInterface.IBikeService;
+import designPatterns.factoryMethod.Interface.IBikeService;
 
 import java.util.List;
 

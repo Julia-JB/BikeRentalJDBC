@@ -1,7 +1,7 @@
 package serviceDAO;
 
 import dao.TechnicianDAO;
-import designPatterns.serviceInterface.ITechnicianService;
+import designPatterns.factoryMethod.Interface.ITechnicianService;
 import model.Technician;
 
 import java.util.List;

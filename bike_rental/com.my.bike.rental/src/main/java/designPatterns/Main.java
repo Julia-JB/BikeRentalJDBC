@@ -1,6 +1,7 @@
 package designPatterns;
+import designPatterns.factoryMethod.Interface.IBikeService;
+import designPatterns.factoryMethod.ServiceFactory;
 import model.Bike;
-import designPatterns.serviceInterface.IBikeService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -9,8 +10,14 @@ public class Main {
 		Logger logger = LogManager.getLogger();
 
 		/*
-		Creating instances of BikeService using the ServiceFactory for MyBatis and DAO implementations.
+		Factory Method Design Pattern
+		Abstract Product - IBikeService interface
+		Concrete Products - BikeServiceDAO, BikeServiceMB
+		Concrete Creator - ServiceFactory
 		*/
+
+		// Creating instances of BikeService using the ServiceFactory for MyBatis and DAO
+		// implementations.
 
 		ServiceFactory factory = new ServiceFactory();
 		IBikeService bikeServiceMB = factory.createBikeService("mybatis");
@@ -30,16 +37,6 @@ public class Main {
 		// Checking error message for unknown service exception
 		IBikeService bikeService = factory.createBikeService("unknown");
 
-		// Creating bike object using BikeBuilder
-		Bike bike3 = new Bike.BikeBuilder().brand("Street Runner")
-				.properties("{\"gears\": 8, \"model\": \"CityCruiser\", \"brakeType\": \"Rim brakes\", " +
-						"\"wheelSize\": \"26 inches\", \"suspension\": false, \"frameMaterial\": " +
-						"\"Steel\", \"basketIncluded\": true}")
-				.status("AVAILABLE")
-				.currentStationId(4)
-				.build();
-
-		logger.info("Bike object: " + bike3);
 	}
 }
 

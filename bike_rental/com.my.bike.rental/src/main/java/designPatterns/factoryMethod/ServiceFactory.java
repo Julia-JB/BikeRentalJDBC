@@ -1,10 +1,10 @@
-package designPatterns;
+package designPatterns.factoryMethod;
 
-import designPatterns.serviceInterface.IBikeRentalService;
-import designPatterns.serviceInterface.ITechnicianService;
+import designPatterns.factoryMethod.Interface.IBikeRentalService;
+import designPatterns.factoryMethod.Interface.IBikeService;
+import designPatterns.factoryMethod.Interface.ITechnicianService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import designPatterns.serviceInterface.IBikeService;
 import serviceMyBatis.BikeRentalService;
 import serviceMyBatis.BikeService;
 import serviceMyBatis.TechnicianService;

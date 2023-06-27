@@ -2,7 +2,7 @@ package serviceDAO;
 
 import dao.BikeRentalDAO;
 import model.BikeRental;
-import designPatterns.serviceInterface.IBikeRentalService;
+import designPatterns.factoryMethod.Interface.IBikeRentalService;
 
 import java.util.List;
 

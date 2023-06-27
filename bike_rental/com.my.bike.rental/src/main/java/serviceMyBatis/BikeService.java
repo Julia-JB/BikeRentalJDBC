@@ -5,7 +5,7 @@ import model.Bike;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import designPatterns.serviceInterface.IBikeService;
+import designPatterns.factoryMethod.Interface.IBikeService;
 
 import java.io.IOException;
 import java.io.InputStream;

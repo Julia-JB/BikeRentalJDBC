@@ -1,5 +1,4 @@
 package dao;
-import Interface.CrudDAO;
 import model.Maintenance;
 import model.Technician;
 import utilities.DBConnection;

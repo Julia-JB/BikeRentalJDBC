@@ -1,6 +1,5 @@
 package dao;
 
-import Interface.CrudDAO;
 import model.RentalTransaction;
 import utilities.DBConnection;
 import dao.daoUtilities.DaoUtility;

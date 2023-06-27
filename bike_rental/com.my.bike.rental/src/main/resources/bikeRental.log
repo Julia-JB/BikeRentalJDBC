@@ -112,3 +112,6 @@ Current Station: 0
 
 2023-06-27 01:02:17.288 INFO designPatterns.singleton.BikeRentalManager 23 rentBike - Bike rented successfully
 2023-06-27 01:02:17.289 INFO designPatterns.singleton.Main 19 main - rented
+
+
+2023-06-27 13:34:03.119 INFO designPatterns.decorator.Main 12 main - Decorated string: STRING TO BE DECORATED

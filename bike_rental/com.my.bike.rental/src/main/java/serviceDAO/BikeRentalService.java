@@ -2,10 +2,11 @@ package serviceDAO;
 
 import dao.BikeRentalDAO;
 import model.BikeRental;
+import designPatterns.serviceInterface.IBikeRentalService;
 
 import java.util.List;
 
-public class BikeRentalService {
+public class BikeRentalService implements IBikeRentalService {
 	 private  BikeRentalDAO bikeRentalDAO;
 
 	 public BikeRentalService() {

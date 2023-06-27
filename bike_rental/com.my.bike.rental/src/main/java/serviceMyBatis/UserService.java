@@ -1,7 +1,5 @@
 package serviceMyBatis;
 
-import dao.UserDAO;
-import mapper.TechnicianMapper;
 import mapper.UserMapper;
 import model.User;
 import org.apache.ibatis.io.Resources;

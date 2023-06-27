@@ -45,6 +45,39 @@ public class Bike {
 		this.currentStationId = currentStation;
 	}
 
+	public static class BikeBuilder {
+		private int bikeId;
+		private String brand;
+		private String properties;
+		private String status;
+		private int currentStationId;
+
+
+		public BikeBuilder brand(String brand) {
+			this.brand = brand;
+			return this;
+		}
+
+		public BikeBuilder properties(String properties) {
+			this.properties = properties;
+			return this;
+		}
+
+		public BikeBuilder status(String status) {
+			this.status = status;
+			return this;
+		}
+
+		public BikeBuilder currentStationId(int currentStationId) {
+			this.currentStationId = currentStationId;
+			return this;
+		}
+
+		public Bike build() {
+			return new Bike(this.brand, this.properties, this.status, this.currentStationId);
+		}
+	}
+
 	@Override
 	public String toString() {
 		return String.format("\nBike ID: %d" +

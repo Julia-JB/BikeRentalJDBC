@@ -48,11 +48,11 @@ public class JAXBRunner {
 		StationService stationService = new StationService();
 		Station station1 = stationService.selectStation(3);
 
-		File stationsOutput = new File(Keys.STATION_OUTPUT.getKey());
+		File stationOutput = new File(Keys.STATION_OUTPUT.getKey());
 
 	try {  JAXBContext jaxbContext = JAXBContext.newInstance(Station.class);
 			Marshaller marshaller = jaxbContext.createMarshaller();
-			marshaller.marshal(station1, stationsOutput);
+			marshaller.marshal(station1, stationOutput);
 
 		} catch (JAXBException e) {
 			e.printStackTrace();

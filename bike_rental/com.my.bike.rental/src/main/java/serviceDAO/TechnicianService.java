@@ -1,11 +1,12 @@
 package serviceDAO;
 
 import dao.TechnicianDAO;
+import designPatterns.serviceInterface.ITechnicianService;
 import model.Technician;
 
 import java.util.List;
 
-public class TechnicianService {
+public class TechnicianService implements ITechnicianService {
 	private TechnicianDAO technicianDAO;
 
 	public TechnicianService() {

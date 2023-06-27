@@ -1,6 +1,5 @@
 package serviceMyBatis;
 
-import mapper.FeedbackMapper;
 import mapper.MaintenanceMapper;
 import model.Maintenance;
 import org.apache.ibatis.io.Resources;

@@ -40,8 +40,8 @@ public class BikeDAO implements CrudDAO<Bike, Integer> {
 			return DaoUtility.mapResultSetToObject(resultSet, Bike.class);
 		} catch ( SQLException | IllegalAccessException | InstantiationException e) {
 			e.printStackTrace();
+			return null;
 		}
-		return null;
 	}
 
 	@Override

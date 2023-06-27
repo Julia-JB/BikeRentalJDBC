@@ -46,8 +46,8 @@ public class BikeRentalDAO implements CrudDAO<BikeRental, Integer> {
 			return DaoUtility.mapResultSetToObject(resultSet, BikeRental.class);
 		} catch (SQLException | IllegalAccessException | InstantiationException e) {
 			e.printStackTrace();
+			return null;
 		}
-		return null;
 	}
 
 	@Override

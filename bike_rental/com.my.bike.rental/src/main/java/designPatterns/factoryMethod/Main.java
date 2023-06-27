@@ -1,4 +1,4 @@
-package designPatterns;
+package designPatterns.factoryMethod;
 import designPatterns.factoryMethod.Interface.IBikeService;
 import designPatterns.factoryMethod.ServiceFactory;
 import model.Bike;

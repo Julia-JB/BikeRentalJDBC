@@ -67,15 +67,15 @@ Date registered: 2023-05-13}]
 
 
 
-2023-06-26 19:41:14.496 INFO designPatterns.PatternRunner 16 main - BikeService implementation: serviceMyBatis.BikeService
-2023-06-26 19:41:14.500 INFO designPatterns.PatternRunner 17 main - Retrieving data using ServiceMyBatis:
+2023-06-26 19:41:14.496 INFO designPatterns.Main 16 main - BikeService implementation: serviceMyBatis.BikeService
+2023-06-26 19:41:14.500 INFO designPatterns.Main 17 main - Retrieving data using ServiceMyBatis:
 Bike ID: 5
 Brand: City Journey
 Properties: {"gears": 8, "model": "CityCruiser", "brakeType": "Rim brakes", "wheelSize": "26 inches", "suspension": false, "frameMaterial": "Steel", "basketIncluded": true}
 Status: AVAILABLE
 Current Station: 1
-2023-06-26 19:41:14.526 INFO designPatterns.PatternRunner 23 main - BikeService implementation: serviceDAO.BikeService
-2023-06-26 19:41:14.527 INFO designPatterns.PatternRunner 24 main - Retrieving data using ServiceDAO:
+2023-06-26 19:41:14.526 INFO designPatterns.Main 23 main - BikeService implementation: serviceDAO.BikeService
+2023-06-26 19:41:14.527 INFO designPatterns.Main 24 main - Retrieving data using ServiceDAO:
 Bike ID: 4
 Brand: RoadBikeCorp
 Properties: {"gears": 18, "model": "SpeedRunner", "brakeType": "Caliper brakes", "wheelSize": "28 inches", "suspension": false, "frameMaterial": "Carbon Fiber", "basketIncluded": false}
@@ -83,7 +83,7 @@ Status: Maintained
 Current Station: 0
 
 2023-06-26 19:44:46.124 ERROR designPatterns.ServiceFactory 21 createBikeService - Unknown service requested. For user service implementation enter "mybatis" or "dao"
-2023-06-26 20:33:30.098 INFO designPatterns.PatternRunner 44 main - Bike object: 
+2023-06-26 20:33:30.098 INFO designPatterns.Main 44 main - Bike object:
 Bike ID: 0
 Brand: Street Runner
 Properties: {"gears": 8, "model": "CityCruiser", "brakeType": "Rim brakes", "wheelSize": "26 inches", "suspension": false, "frameMaterial": "Steel", "basketIncluded": true}

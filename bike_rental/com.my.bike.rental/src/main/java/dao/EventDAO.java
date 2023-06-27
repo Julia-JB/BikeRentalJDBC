@@ -119,7 +119,6 @@ public class EventDAO implements CrudDAO<Event, Integer> {
 		LocalDateTime dateTime = event.getDate();
 		Timestamp timestamp = Timestamp.valueOf(dateTime);
 		statement.setTimestamp(2, timestamp);
-
 		statement.setDouble(3, event.getLocation().getX());
 		statement.setDouble(4, event.getLocation().getY());
 		statement.setInt(5, event.getOrganizerId());
